@@ -36,7 +36,6 @@
 					//Ends The Voting Sessions And Determines Outcome
 					if ($gameTimeVoteEnd <= $gameTimeCurr && $voteInSession == true)
 						{
-                            print("console_message FUCK YEAH!!!!\n");
 							$voteInSession = false;
 							$numPlayersVoteYes = count($playersVotedYes);
 							$numPlayersVoteNo = count($playersVotedNo);
@@ -138,6 +137,16 @@
 											print("player_message {$param[2]} \"0xff0010{$value}\"\n");
 										}
 								}
+                            //DEBUG
+                            elseif($param[4] <= 1 && $param[1] == "/gtc")
+    					        {
+							        print("console_message {$gameTimeCurr}\n");
+						        }
+                            elseif($param[4] <= 1 && $param[1] == "/gtvt")
+        				        {
+							        print("console_message {$gameTimeVoteEnd}\n");
+						        }
+                            //END DEBUG
 							else
 								{
 									print("player_message {$param[2]} \"Command does not exist!\"\n");
