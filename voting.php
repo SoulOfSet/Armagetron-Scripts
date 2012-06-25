@@ -14,10 +14,10 @@
 		$gameTimeCurr = 0;
 		$gameTimeVoteEnd = -1;
 		//File Includes
-		$teamsumo = "include teamsumo.cfg \n";
-		$pandamonium = "include settings_custom.cfg \n"; //Default CFG
-		$hr = "include hr.cfg \n";
-		$df = "include df.cfg \n";
+        $pandamonium = "sinclude settings_custom.cfg \n"; //Default CFG
+		$teamsumo = "sinclude teamsumo.cfg \n";
+		$hr = "sinclude hr.cfg \n";
+		$df = "sinclude df.cfg \n";
 		//Files Array
 		$filesToInclude = array($teamsumo, $pandamonium, $hr, $df);
 		$filesToIncludeStrings = array("teamsumo", "pandamonium", "hr", "df");
@@ -49,10 +49,10 @@
 							if ($numPlayersVoteYes > $numPlayersVoteNo) //The Vote Has Been Accepted
 								{
                                     $currGameMode = $voteType;
-									print("console_message Vote Accepted! Config will be included shortly! \n");
-                                    print("DELAY_COMMAND 5 {$command}\n");
+									print("console_message Vote Accepted! Config will be included immediately! \n");
+                                    print($command);
                                     print("collapse_zone\n");
-                                    print("START_NEW_MATCH");
+                                    print("START_NEW_MATCH\n");
                                     foreach($playersAlive as $value)
                                         {
                                                 print("kill {$value}\n");
@@ -90,7 +90,7 @@
 								{
 									$voteOwner = $param[2];
 									$voteType = $param[5];
-									if (in_array($param[5], $filesToIncludeStrings))
+									if (in_array($param[5], $filesToIncludeStrings) && $voteType !== $currGameMode)
 										{
 											$voteInSession = true;
 											if ($voteType == "teamsumo") {$command = $teamsumo;}
@@ -101,9 +101,12 @@
 											$gameTimeVoteEnd = $gameTimeCurr + $voteSessionTime;
 											print("console_message A vote has been cast for {$voteType}. Please vote /yes or /no in your chat! \n");
 										}
+                                    elseif($voteType == $currGameMode)
+                                        {
+                                            print("player_message {$param[2]} \"That is already the current game mode!\"\n");
 									else
 										{
-											print("console_message Please enter a valid mode. Type /list for available modes! \n");
+											print("player_message {$param[2]} \"That is not a valid game mode. Type /list for available modes!\"\n");
 										}
 								}
 							elseif ($param[1] == "/chmode" && $voteInSession == true)
@@ -117,7 +120,7 @@
 										!in_array($param[2], $playersVotedNo))
 											{
 												$playersVotedYes[] = $param[2]; 
-												print("player_message {$param[2]} \"Your vote has been casted!\"\n");
+												print("player_message {$param[2]} \"Your vote has been cast!\"\n");
 											}
 									else
 										{
