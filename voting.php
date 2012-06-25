@@ -66,8 +66,10 @@
 						}
 					if (preg_match("/^NEW_ROUND/", $input) && $voteInSession == true)
 						{
+                            
 							$gameTimeVoteEnd = $gameTimeVoteEnd - $gameTimeCurr;
-                            print("DELAY_COMMAND 4 console_message A vote is still in session for {$voteType}. Please type /yes or /no to vote.");
+                            $gameTimeCurr = -2;
+                            print("DELAY_COMMAND 4 console_message A vote is still in session for {$voteType}. Please type /yes or /no to vote.\n");
 						}	
 					//Voting Control
 					if (preg_match("/^INVALID_COMMAND/", $input))
