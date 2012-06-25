@@ -3,23 +3,24 @@
 		//Vote Control
 		$playersVotedYes = array();
 		$playersVotedNo = array();
+        $playersAlive = array();
 		$numPlayersVoteYes;
 		$numPlayersVoteNo;
 		$voteInSession = false;
 		$voteSessionTime = 20; //In Seconds
 		$command;
-		$willInclude = false;
+        $currGameMode = "pandamonium"; //Put the default cfg here.
 		//Time Tracker
 		$gameTimeCurr = 0;
 		$gameTimeVoteEnd = -1;
 		//File Includes
 		$teamsumo = "include teamsumo.cfg \n";
-		$fort = "include fort.cfg \n";
+		$pandamonium = "include settings_custom.cfg \n"; //Default CFG
 		$hr = "include hr.cfg \n";
 		$df = "include df.cfg \n";
 		//Files Array
-		$filesToInclude = array($teamsumo, $fort, $hr, $df);
-		$filesToIncludeStrings = array("teamsumo", "fort", "hr", "df");
+		$filesToInclude = array($teamsumo, $pandamonium, $hr, $df);
+		$filesToIncludeStrings = array("teamsumo", "pandamonium", "hr", "df");
 		
 		//Function To Start The Voting Session And Determines The Length Of The Session
 			while(1)
@@ -32,7 +33,12 @@
 						{
 							$gameTimeCurr = $param[1];
 						}
-					
+					//Track Players Alive
+                    if(preg_match("/^CYCLE_CREATED/", $line))
+                        {
+                        	$name = $param[1];
+                        	$playersAlive[] = $name;
+                        }
 					//Ends The Voting Sessions And Determines Outcome
 					if ($gameTimeVoteEnd <= $gameTimeCurr && $voteInSession == true)
 						{
@@ -42,8 +48,15 @@
 							//Do Or Not Do?
 							if ($numPlayersVoteYes > $numPlayersVoteNo) //The Vote Has Been Accepted
 								{
-									$willInclude = true;
-									print("console_message Vote Accepted! Config will be included at the end of the round! \n");
+                                    $currGameMode = $voteType;
+									print("console_message Vote Accepted! Config will be included shortly! \n");
+                                    print("DELAY_COMMAND 5 {$command}\n");
+                                    print("collapse_zone\n");
+                                    print("START_NEW_MATCH");
+                                    foreach($playersAlive as $value)
+                                        {
+                                                print("kill {$value}\n");
+                                        }  
 								}
 							elseif ($numPlayersVoteYes == $numPlayersVoteNo) //The Vote Tied
 								{
@@ -54,23 +67,22 @@
 									print("console_message The vote was denied! No action will be taken.\n");
 								}
 							$gameTimeVoteEnd = -1;
-							unset($PlayersVotedYes);
-							unset($PlayersVotedNo);
+							unset($playersVotedYes);
+							unset($playersVotedNo);
 						}
 						
 					//Include It When The Round Ends
-					if (preg_match("/^ROUND_COMMENCING/", $input) && $willInclude == true)
-						{
-							print($command);
-							$willInclude = false;
-						}
 					if (preg_match("/^NEW_ROUND/", $input) && $voteInSession == true)
 						{
                             
 							$gameTimeVoteEnd = $gameTimeVoteEnd - $gameTimeCurr;
                             $gameTimeCurr = -2;
-                            print("DELAY_COMMAND 4 console_message A vote is still in session for {$voteType}. Please type /yes or /no to vote.\n");
-						}	
+                            print("console_message A vote is still in session for {$voteType}. Please type /yes or /no to vote.\n");
+						}
+                    if (preg_match("/^NEW_ROUND/", $input) && $voteInSession == false)
+						{
+                            print("console_message The current game mode is {$currGameMode}. Type /chmode modehere to change that! Type /list for available modes.\n");
+						}
 					//Voting Control
 					if (preg_match("/^INVALID_COMMAND/", $input))
 						{
@@ -82,7 +94,7 @@
 										{
 											$voteInSession = true;
 											if ($voteType == "teamsumo") {$command = $teamsumo;}
-											elseif ($voteType == "fort") {$command = $fort;}
+											elseif ($voteType == "pandamonium") {$command = $pandamonium;}
 											elseif ($voteType == "hr") {$command = $hr;}
 											elseif ($voteType == "df") {$command = $df;}
                                             $playersVotedYes[] = $voteOwner; 
