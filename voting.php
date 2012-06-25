@@ -87,7 +87,7 @@
 										}
 									else
 										{
-											print("console_message Please enter a valid mode. Type /modes for a list! \n");
+											print("console_message Please enter a valid mode. Type /list for available modes! \n");
 										}
 								}
 							elseif ($param[1] == "/chmode" && $voteInSession == true)
