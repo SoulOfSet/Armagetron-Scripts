@@ -34,7 +34,7 @@
 							$gameTimeCurr = $param[1];
 						}
 					//Track Players Alive
-                    if(preg_match("/^CYCLE_CREATED/", $line))
+                    if(preg_match("/^CYCLE_CREATED/", $input))
                         {
                         	$name = $param[1];
                         	$playersAlive[] = $name;
