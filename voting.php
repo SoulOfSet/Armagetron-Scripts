@@ -43,8 +43,7 @@
 							if ($numPlayersVoteYes > $numPlayersVoteNo) //The Vote Has Been Accepted
 								{
 									$willInclude = true;
-									print("console_message Vote Accepted! Config will be included at
-										the end of the round! \n");
+									print("console_message Vote Accepted! Config will be included at the end of the round! \n");
 								}
 							elseif ($numPlayersVoteYes == $numPlayersVoteNo) //The Vote Tied
 								{
@@ -55,8 +54,8 @@
 									print("console_message The vote was denied. No action will be taken.\n");
 								}
 							$gameTimeVoteEnd = -1;
-							unset($numPlayersVoteYes);
-							unset($numPlayersVoteNo);
+							unset($PlayersVotedYes);
+							unset($PlayersVotedNo);
 						}
 						
 					//Include It When The Round Ends
