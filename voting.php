@@ -104,6 +104,7 @@
                                     elseif($voteType == $currGameMode)
                                         {
                                             print("player_message {$param[2]} \"That is already the current game mode!\"\n");
+                                        }
 									else
 										{
 											print("player_message {$param[2]} \"That is not a valid game mode. Type /list for available modes!\"\n");
