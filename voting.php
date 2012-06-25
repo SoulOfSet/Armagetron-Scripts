@@ -1,8 +1,8 @@
 #!/usr/bin/php
 	<?php
 		//Vote Control
-		$playersVotedYes;
-		$playersVotedNo;
+		$playersVotedYes = array();
+		$playersVotedNo = array();
 		$numPlayersVoteYes;
 		$numPlayersVoteNo;
 		$voteInSession = false;
@@ -34,7 +34,7 @@
 						}
 					
 					//Ends The Voting Sessions And Determines Outcome
-					if ($gameTimeVoteEnd >= $gameTimeCurr && $voteInSession == true)
+					if ($gameTimeVoteEnd <= $gameTimeCurr && $voteInSession == true)
 						{
 							$voteInSession = false;
 							$numPlayersVoteYes = count($playersVotedYes);
@@ -80,22 +80,19 @@
 											elseif ($voteType == "fort") {$command = $fort;}
 											elseif ($voteType == "hr") {$command = $hr;}
 											elseif ($voteType == "df") {$command = $df;}
-											array_push($playersVotedYes, $voteOwner); //The Person Who Called Vote Needs A Yes
+                                            $playersVotedYes[] = $voteOwner; 
 											$gameTimeVoteEnd = $gameTimeCurr + $voteSessionTime;
-											print("console_message A vote has been cast for {$voteType}. Please vote /yes or /no
-											in your chat! \n");
+											print("console_message A vote has been cast for {$voteType}. Please vote /yes or /no in your chat! \n");
 										}
 									else
 										{
-											print("console_message Please enter a valid mode. Type /modes for 
-												a list! \n");
+											print("console_message Please enter a valid mode. Type /modes for a list! \n");
 										}
 								}
 							elseif ($param[1] == "/chmode" && $voteInSession == true)
 								{
 									
-									print("console_message A vote is already in session. Type /yes or /no
-										to vote on it \n");
+									print("console_message A vote is already in session. Type /yes or /no to vote on it \n");
 								}
 							elseif ($param[1] == "/yes" && $voteInSession == true)
 								{
@@ -103,11 +100,11 @@
 										!in_array($param[2], $playersVotedNo))
 											{
 												$playersVotedYes[] = $param[2]; 
-												print("player_message {$param[2]} \"Your vote has been casted!\" \n");
+												print("player_message {$param[2]} \"Your vote has been casted!\"\n");
 											}
 									else
 										{
-											print("player_message {$param[2]} \"You've already cast your vote\" \n");
+											print("player_message {$param[2]} \"You've already cast your vote\"\n");
 										}
 								}
 							elseif ($param[1] == "/no" && $voteInSession == true)
@@ -116,35 +113,33 @@
 										!in_array($param[2], $playersVotedNo))
 											{
 												$playersVotedNo[] = $param[2]; 
-												print("player_message {$param[2]} \"Your vote has been casted!\" \n");
+												print("player_message {$param[2]} \"Your vote has been casted!\"\n");
 											}
 									else
 										{
-											print("player_message {$param[2]} \"You've already voted!\" \n");
+											print("player_message {$param[2]} \"You've already voted!\"\n");
 										}
 								}
 							//No Vote In Progress
 							elseif ($param[1] == "/yes" && $voteInSession == false)
 								{
-									print("player_message {$param[2]} \"There is no vote in progress.
-										Type /chmode modehere to start a vote! Type /list for the available modes!\" \n");
+									print("player_message {$param[2]} \"There is no vote in progress. Type /chmode modehere to start a vote. Type /list for available modes!\"\n");
 								}
 							elseif ($param[1] == "/no" && $voteInSession == false)
 								{
-									print("player_message {$param[2]} \"There is no vote in progress.
-										Type /chmode modehere to start a vote! Type /list for the available modes!\" \n");
+									print("player_message {$param[2]} \"There is no vote in progress. Type /chmode modehere to start a vote. Type /list for available modes!\"\n");
 								}
 							//List The Modes
 							elseif ($param[1] == "/list")
 								{
 									foreach ($filesToIncludeStrings as $value)
 										{
-											print("player_message {$param[2]} \"0xff0010{$value}\" \n");
+											print("player_message {$param[2]} \"0xff0010{$value}\"\n");
 										}
 								}
 							else
 								{
-									print("player_message {$param[2]} \"Command does not exist!\" \n");
+									print("player_message {$param[2]} \"Command does not exist!\"\n");
 								}
 						}
 
