@@ -47,11 +47,11 @@
 								}
 							elseif ($numPlayersVoteYes == $numPlayersVoteNo) //The Vote Tied
 								{
-									print("console_message The vote has tied. No action will be taken.\n");
+									print("console_message The vote has tied! No action will be taken.\n");
 								}
 							else //The Vote Was Denied
 								{
-									print("console_message The vote was denied. No action will be taken.\n");
+									print("console_message The vote was denied! No action will be taken.\n");
 								}
 							$gameTimeVoteEnd = -1;
 							unset($PlayersVotedYes);
