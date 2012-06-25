@@ -36,6 +36,7 @@
 					//Ends The Voting Sessions And Determines Outcome
 					if ($gameTimeVoteEnd <= $gameTimeCurr && $voteInSession == true)
 						{
+                            print("console_message FUCK YEAH!!!!\n");
 							$voteInSession = false;
 							$numPlayersVoteYes = count($playersVotedYes);
 							$numPlayersVoteNo = count($playersVotedNo);
