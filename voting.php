@@ -134,7 +134,7 @@
 										!in_array($param[2], $playersVotedNo))
 											{
 												$playersVotedNo[] = $param[2]; 
-												print("player_message {$param[2]} \"Your vote has been casted!\"\n");
+												print("player_message {$param[2]} \"Your vote has been cast!\"\n");
 											}
 									else
 										{
