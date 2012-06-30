@@ -29,4 +29,8 @@ Pong
 --------------
 A little idea I had a while back. I had this awesome setup with the 0.4 polygonal zones. I quickly realized that sty had not been ported to 0.4 but not until i had worked that script out and made a map for it. If anyone would like to make a sty map with normal target zones be my guest. I'll get to it eventually though.
 
+RandomBall
+-------------
+A random ball of fun that does random things :D. Unfinished.
+
 --SoulOfSet
