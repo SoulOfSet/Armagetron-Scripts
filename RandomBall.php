@@ -1,38 +1,46 @@
 #!/usr/bin/php
     <?php
-		$ballInPlay = false;
+    	$ballInPlay = false;
 		$nextBallSpawnTime = rand(10, 20);
+        
+        //Function to calculate random floats
+        function GetRandomFloat($min, $max)
+        {
+            $range = $max-$min;
+            $num = $min + $range * mt_rand(0, 32767)/32767;
+
+            $num = round($num, 1);
+
+            return ((float) $num);
+        }
+        
 		//Put Your Random Functions Here :D
-		//*********************************************************
 		
 		//Spawns Lots O' Balls 
 		function spawnBalls($playerName)
 			{
-				$numBallsLimited = rand(10, 20) //Increase the second number for the chance of spawning more!
+				print("console_message $playerName spawned balls everywhere! \n");
+				$numBallsLimited = rand(10, 20); //Increase the second number for the chance of spawning more!
 				for($i = 0; $i < $numBallsLimited; $i++)
 					{
-						print("console_message $playerName spawned balls everywhere! \n");
 						$xRandBall = rand(10, 490);
 						$yRandBall = rand(10, 490);
-						$randColorBallR = ;
-						$randColorBallG = ;
-						$randColorBallB = ;
-						print("spawn_zone n randBallMulti ball $xRandball $yRandBall 10 0 $randColorBallR $randColorBallG $randColorBallB \n");
+						print("spawn_zone n randBallMulti ball $xRandball $yRandBall 10 0 \n");
 						$randEffectLength = rand(10, 20); //Min and max of how long it will last
-						print("delay_command $randEffectLength collapse_zone randBallMulti \n");
 					}
+				print("delay_command $randEffectLength collapse_zone randBallMulti \n");
 			}
 			
 		//END FUNCTIONS
-		//**********************************************************
+
 			while(1)
 				{
 					$input = rtrim(fgets(STDIN, 1024)); 
 					$param = explode(" ", $input);
 					//Random Target Coloring
-					$randColorTargetR = ;//Dont
-					$randColorTargetG = ;//touch
-					$randColorTargetB = ;//these
+					$randColorTargetR = GetRandomFloat(0, 1);//Dont
+					$randColorTargetG = GetRandomFloat(0, 1);//touch
+					$randColorTargetB = GetRandomFloat(0, 1);//these
 					//Random Coordinate Control
 					$xRandTarget = rand(10, 490); //According to the size of your grid you might want to 
 					$yRandTarget = rand(10, 490);//edit these. It's assuming you're using size_factor 0
@@ -50,7 +58,7 @@
 					$randInt = rand(10, 30);
 					
 					//Track The Time
-					if (preg_match("/^GAME_TIME/", $input)
+					if (preg_match("/^GAME_TIME/", $input))
 					{
 						$gameTimeCurr = $param[1];
 						if ($ballInPlay == true)
@@ -94,11 +102,9 @@
 						//Ball needs to go away :3
 						print("collapse_zone randBall \n");
 						
-						/*TODO: Get rid of this method and replace it with something more efficient
-						Using this link method is somewhat ridiculous*/
+						//TODO: Get rid of this method and replace it with something more efficient. Using this link method is somewhat ridiculous*/
 						
-						/*Now we use the called link from the array to decide what function or command to execute
-						This should be easy if you named your functions the same as the link*/
+						//Now we use the called link from the array to decide what function or command to execute This should be easy if you named your functions the same as the link*/
 						if ($randEffect == "spawnBalls") { spawnBalls($playerName); }
 						
 						
@@ -106,8 +112,7 @@
 						
 					}
 				}
-	?>
-						
+	?>				
 					 
 					 
 					 
