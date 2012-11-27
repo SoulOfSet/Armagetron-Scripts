@@ -33,4 +33,8 @@ RandomBall
 -------------
 A random ball of fun that does random things :D. Unfinished.
 
+Acid
+-------------
+Finished script. Takes a zone named ball and makes it flash random colors.
+
 --SoulOfSet
