@@ -22,14 +22,14 @@
 				 $numplayers=0;
 				 $randxcoord=rand($minx, $maxx);
 				 $randycoord=rand($miny, $maxy);
-				 $artillery="console_message Atrillery Strike Spawned! \n spawn_zone n artillery target {$randxcoord} {$randycoord} 10 0 0 0 true 15 15 15 \n";
-				 $juggernaut="console_message Juggernaut Spawned! \n spawn_zone n jug target {$randxcoord} {$randycoord} 10 0 \n"; 
-				 $nuke="console_message Nuke Spawned! \n spawn_zone n nuke target {$randxcoord} {$randycoord} 10 0 0 0 true 15 0 10 \n"; 
-				 $dogs="console_message Dogs Spawned! \n spawn_zone n dogs target {$randxcoord} {$randycoord} 10 0 0 0 13 7 5 true\n";
-				 $attheli="console_message Attack Heli Spawned! \n spawn_zone n attheli target {$randxcoord} {$randycoord} 10 0 0 0 true 0 0 0\n";
-				 $sentry="console_message Sentry Gun Spawned! \n spawn_zone n sentry target {$randxcoord} {$randycoord} 10 0 0 0 true 0 10 15\n";
-				 $rollingthun="console_message Rolling Thunder Spawned! \n spawn_zone n rollingthun target {$randxcoord} {$randycoord} 10 0 0 0 true 0 0 15\n";
-				 $napalm="console_message Napalm Spawned! \n spawn_zone n napalm target {$randxcoord} {$randycoord} 10 0 0 0 true 15 0 0\n";
+				 $artillery="console_message Atrillery Strike spawned! \n spawn_zone n artillery target {$randxcoord} {$randycoord} 10 0 0 0 true 15 15 15 \n";
+				 $juggernaut="console_message 0x22ff22Juggernaut spawned! \n spawn_zone n jug target {$randxcoord} {$randycoord} 10 0 \n"; 
+				 $nuke="console_message 0xff3399Nuke spawned! \n spawn_zone n nuke target {$randxcoord} {$randycoord} 10 0 0 0 true 15 0 10 \n"; 
+				 $dogs="console_message 0xffff00Dogs spawned! \n spawn_zone n dogs target {$randxcoord} {$randycoord} 10 0 0 0 13 7 5 true\n";
+				 $attheli="console_message 0x888888Attack Heli spawned! \n spawn_zone n attheli target {$randxcoord} {$randycoord} 10 0 0 0 true 0 0 0\n";
+				 $sentry="console_message 0x00ffffSentry Gun Spawned! \n spawn_zone n sentry target {$randxcoord} {$randycoord} 10 0 0 0 true 0 10 15\n";
+				 $rollingthun="console_message 0x0000ffRolling Thunder spawned! \n spawn_zone n rollingthun target {$randxcoord} {$randycoord} 10 0 0 0 true 0 0 15\n";
+				 $napalm="console_message 0xff0000Napalm spawned! \n spawn_zone n napalm target {$randxcoord} {$randycoord} 10 0 0 0 true 15 0 0\n";
 				 $placebo="FUCK \n"; //dunno
 				 $killstreaks=array($juggernaut, $artillery, $dogs, $attheli, $sentry, $rollingthun, $nuke, $placebo); //the array containing perks/killstreaks w/e
 				 $numbers=array(1, 2, 3, 4, 5, 6, 7, 8);
@@ -131,7 +131,7 @@
 						}
 						else
 						{
-							print("player_message {$param[2]} \"That Command Does Not Exist\"\n");
+							print("player_message {$param[2]} \"That command does not exist\"\n");
 						}
 					}
 				//SCORING
@@ -141,22 +141,22 @@
 							{
 								if ($scoretype == "nuke")
 									{
-										print("console_message {$scoree} Received 1 Point For Blasting {$param[1]} With A Nuke!\n");
+										print("console_message {$scoree} received 1 point for blasting {$param[1]} with a 0xff3399Nuke!\n");
 										print("add_score_player {$scoree} 1 \n");
 									}
 								elseif ($scoretype == "artillery")
 									{
-										print("console_message {$scoree} Received 1 Point For Blasting {$param[1]} With An Artillery Shell!\n");
+										print("console_message {$scoree} received 1 point for blasting {$param[1]} with an Artillery Shell!\n");
 										print("add_score_player {$scoree} 1 \n");
 									}
 								elseif ($scoretype == "attheli")
 									{
-										print("console_message {$scoree} Received 1 Point For Shooting Down {$param[1]} With Their Attack Helicopter!\n");
+										print("console_message {$scoree} received 1 point for shooting down {$param[1]} with their 0x888888Attack Helicopter!\n");
 										print("add_score_player {$scoree} 1 \n");
 									}
 								elseif ($scoretype == "rollingthun")
 									{
-										print("console_message {$scoree} Receive 1 Point For Blasting {$param[1]} With Their Rolling Thunder!\n");
+										print("console_message {$scoree} received 1 point for blasting {$param[1]} with their 0x0000ffRolling Thunder!\n");
 										print("add_score_player {$scoree} 1 \n");
 									}
 							}
@@ -164,22 +164,22 @@
 							{
 								if ($scoretype == "nuke")
 									{
-										print("console_message {$scoree} Was Docked 1 Point Hitting Their Own Nuke!\n");
+										print("console_message {$scoree} was docked 1 point for hitting their own 0xff3399Nuke!\n");
 										print("add_score_player {$scoree} -1 \n");
 									}
 								elseif ($scoretype == "artillery")
 									{
-										print("console_message {$scoree} Was Docked 1 Point For Blasting Themself With An Artillery Shell!\n");
+										print("console_message {$scoree} was docked 1 point for blasting themself with an Artillery Shell!\n");
 										print("add_score_player {$scoree} -1 \n");
 									}
 								elseif ($scoretype == "attheli")
 									{
-										print("console_message {$scoree} Was Docked 1 Point For Getting Shot By Their Own Attack Helicopter!\n");
+										print("console_message {$scoree} was docked 1 point for getting shot by their own 0x888888Attack Helicopter!\n");
 										print("add_score_player {$scoree} -1 \n");
 									}
 								elseif ($scoretype == "rollingthunder")
 									{
-										print("console_message {$scoree} Was Docked 1 Point For Getting Blasted By Their Own Rolling Thunder!\n");
+										print("console_message {$scoree} was docked 1 point for getting blasted by their own 0x0000ffRolling Thunder!\n");
 										print("add_score_player {$scoree} -1 \n");
 									}	
 							}
@@ -246,13 +246,13 @@
 					{ 
 					  if ($param[2] == "jug") //jug
 					   {
-						print("console_message {$param[5]} Got The Juggernaut!\n");
+						print("console_message {$param[5]} got the 0x22ff22Juggernaut!\n");
 						print("set_zone_expansion jug -100\n");
 						print("spawn_zone zombieOwner {$param[5]} {$param[5]} {$param[6]} {$param[7]} 10 0 0 0 false\n");
 					   }
 					  elseif ($param[2] == "nuke") //nuke
 					   {
-						print("console_message {$param[5]} Got The Nuke!\n");
+						print("console_message {$param[5]} got the 0xff3399Nuke!\n");
 						$randxcoordd=rand($minx, $maxx);
 						$randycoordd=rand($miny, $maxy);
 						print("set_zone_expansion nuke -100\n");
@@ -265,7 +265,7 @@
 					  elseif ($param[2] == "artillery") //artillery
 						{
 							print("set_zone_expansion artillery -100\n");
-							print("console_message {$param[5]} Got The Artillery Strike!\n");
+							print("console_message {$param[5]} got the Artillery Strike!\n");
 							for ($i = 1; $i <= 40; $i++)
 								{
 									$randxcoorda=rand($minx, $maxx);
@@ -278,7 +278,7 @@
 					  elseif ($param[2] == "dogs") //dogs
 						{
 						print("set_zone_expansion dogs -100\n");
-						print("console_message {$param[5]} Got The Dogs! \n");
+						print("console_message {$param[5]} got the 0xffff00Dogs! \n");
 						$remove = array_search($param[5], $playersalive);
 						unset($playersalive[$remove]);
 						 foreach ($playersalive as $value)
@@ -290,7 +290,7 @@
 						elseif ($param[2] == "attheli") //attack helicopter
 						{
 							print("set_zone_expansion attheli -100\n");
-							print("console_message {$param[5]} Got The Attack Helicopter! \n");
+							print("console_message {$param[5]} got the 0x888888Attack Helicopter! \n");
 								for ($f = 1; $f <= 10; $f++)
 									{
 										$randxcoordb=rand($minx, $maxx);
@@ -317,7 +317,7 @@
 						}
 						elseif ($param[2] == "sentry") //sentry
 						{
-						print("console_message {$param[5]} Activated The Sentry!\n");
+						print("console_message {$param[5]} activated the 0x00ffffSentry!\n");
 						print("set_zone_expansion sentry -100\n");
 						print("spawn_zone n sentryzone rubber {$param[6]} {$param[7]} 10 0 0 0 0 false 0 10 15 \n ");
 						$scoretype="sentry";
@@ -337,13 +337,13 @@
 					   {
 						print("kill {$param[5]} sen {$sentryowner}\n");
 						print("add_score_player {$sentryowner} -1 \n");
-						print("console_message {$sentryowner} Received 1 Point For Blasting {$param[5]} With Their Sentry!\n");
+						print("console_message {$sentryowner} received 1 point for blasting {$param[5]} with their 0x00ffffSentry!\n");
 						unset($sentrytarget);
 					   }
 					   elseif ($param[2] == "rollingthun")  //Rolling Thunder
 					   {
 							$scoretype="rollingthun";
-							print("console_message {$param[5]} Activated Rolling Thunder!\n");
+							print("console_message {$param[5]} activated the 0x0000ffRolling Thunder!\n");
 							print("set_zone_expansion rollingthun -100\n");
 							$rollingthunderowner = $param[5];
 							$scoree = $param[5];
@@ -466,7 +466,7 @@
 									$scoree = $param[5];
 									$scoretype = "napalm";
 									$napalmowner = $param[5];
-									print("console_message {$param[5]} Got A Napalm Strike!\n");
+									print("console_message {$param[5]} got a 0xff0000Napalm Strike!\n");
 									print("set_zone_expansion napalm -100\n");
 									$napx = $randxcoord=rand($minx, $maxx);
 									$napy = $randycoord=rand($miny, $maxy);
