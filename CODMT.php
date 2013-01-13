@@ -5,7 +5,7 @@
 	$int=10;
 	$scoree="";
 	$scoretype="";
-	$scriptname="lives.php";
+	$scriptname="codmt.php";
 	$sentryactive=0;
 	$timesentrydie=0;
 	$sentryowner;
