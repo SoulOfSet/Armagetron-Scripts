@@ -1,7 +1,7 @@
 #!/usr/bin/php
  <?php
  while(1)
- /Script by Moofie
+ //Script by Moofie
  {
   $input = rtrim(fgets(STDIN, 1024));
 	$param = explode(" ", $input); 
