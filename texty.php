@@ -4,6 +4,11 @@
  
  function sendMessage($textMessage, $personalMessage, $sender)
   {
+   $textAddress = "number@e-mailaddress.com"; //You could use an email or cell number here. Examples: http://www.emailtextmessages.com/
+   $textSubject = "Armagetron Message";
+   $textHeaders = 'From: root@myserver.com'."\r\n".
+               'Reply-To: root@myserver.com'."\r\n" .
+               'X-Mailer: PHP/' . phpversion();
    if($personalMessage) { $textSubject = "Arma PM: $sender"; }
    $mail = mail($textAddress, $textSubject, $textMessage, $headers);
    if(!mail)
@@ -17,12 +22,6 @@
    $textSubject = "Armagetron Message"; //Please make sure this is the same as the original $textMessage near the top.
   }
   //
- //Prequisites For The Mail Function
-  $textAddress = "number@e-mailaddress.com"; //You could use an email or cell number here. Examples: http://www.emailtextmessages.com/
-  $textSubject = "Armagetron Message";
-  $textHeaders = 'From: root@myserver.com'."\r\n".
-               'Reply-To: root@myserver.com'."\r\n" .
-               'X-Mailer: PHP/' . phpversion();
   //Events which you wish to receive a message
   $onChat = 0;
   $onKill = 0;
