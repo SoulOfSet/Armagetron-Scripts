@@ -10,7 +10,7 @@
                'Reply-To: root@myserver.com'."\r\n" .
                'X-Mailer: PHP/' . phpversion();
    if($personalMessage) { $textSubject = "Arma PM: $sender"; }
-   $mail = mail($textAddress, $textSubject, $textMessage, $headers);
+   $mail = mail($textAddress, $textSubject, $textMessage, $textHeaders);
    if(!mail)
     {
       echo "Something is broken with the mail function.\n";
