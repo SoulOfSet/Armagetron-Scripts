@@ -64,4 +64,24 @@
            $textMessage = "Admin Command by $adminCommander: $adminCommand $additionalCommandParams";
            sendMessage($textMessage, NULL, NULL );
           }
+         if(preg_match("/^ADMIN_COMMAND/", $input) && $onPlayerBan && strtolower($param[4]) == "ban")
+          {
+           $banParam = explode(" ", $input, 8)
+           $adminBanner = $param[1];
+           $playerBanned = $param[5]
+           $banLength = $param[6];
+           $banReason = $banParam[7];
+           $textMessage = "Ban: $adminBanner banned $playerBanned for $banLength because $banReason";
+           sendMessage($textMessage, NULL, NULL );
+          }
+         if(preg_match("/^ADMIN_COMMAND/", $input) && $onPlayerKick && strtolower($param[4]) == "kick")
+          {
+           $kickParam = explode(" ", $input, 8)
+           $adminKicker = $param[1];
+           $playerKicked = $param[5]
+           $kickLength = $param[6];
+           $kickReason = $banParam[7];
+           $textMessage = "Kick: $adminKicker kicked $playerKicked for $kickLength because $kickReason";
+           sendMessage($textMessage, NULL, NULL );
+          }
    
