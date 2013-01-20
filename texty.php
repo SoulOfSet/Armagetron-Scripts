@@ -59,11 +59,11 @@
           }
          if(preg_match("/^ADMIN_COMMAND/", $input) && $onPlayerBan && strtolower($param[4]) == "ban")
           {
-           $banParam = explode(" ", $input, 9);
+           $banParam = explode(" ", $input, 8);
            $adminBanner = $param[1];
            $playerBanned = $param[5];
            $banLength = $param[6];
-           $banReason = $banParam[8];
+           $banReason = $banParam[7];
            if(empty($banLength)) { $banLength = "none given"; }
            if(empty($banReason)) { $banReason = "none given"; }
            $textMessage = "Ban: $adminBanner banned $playerBanned for $banLength because $banReason";
@@ -71,10 +71,10 @@
           }
          if(preg_match("/^ADMIN_COMMAND/", $input) && $onPlayerKick && strtolower($param[4]) == "kick")
           {
-           $kickParam = explode(" ", $input, 8);
+           $kickParam = explode(" ", $input, 7);
            $adminKicker = $param[1];
            $playerKicked = $param[5];
-           $kickReason = $banParam[7];
+           $kickReason = $kickParam[6];
            if(empty($kickReason)) { $kickReason = "none given"; }
            $textMessage = "Kick: $adminKicker kicked $playerKicked because $kickReason";
            sendMessage($textMessage, NULL, NULL );
