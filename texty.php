@@ -57,7 +57,7 @@
           }
          if(preg_match("/^ADMIN_COMMAND/", $input) && $onAdminCommand)
           {
-           $commandParam = explode(" ", $input, 6)
+           $commandParam = explode(" ", $input, 6);
            $adminCommand = $param[4];
            $additionalCommandParams = $commandParam[5];
            $adminCommander = $param[1];
@@ -66,7 +66,7 @@
           }
          if(preg_match("/^ADMIN_COMMAND/", $input) && $onPlayerBan && strtolower($param[4]) == "ban")
           {
-           $banParam = explode(" ", $input, 8)
+           $banParam = explode(" ", $input, 8);
            $adminBanner = $param[1];
            $playerBanned = $param[5]
            $banLength = $param[6];
@@ -76,7 +76,7 @@
           }
          if(preg_match("/^ADMIN_COMMAND/", $input) && $onPlayerKick && strtolower($param[4]) == "kick")
           {
-           $kickParam = explode(" ", $input, 8)
+           $kickParam = explode(" ", $input, 8);
            $adminKicker = $param[1];
            $playerKicked = $param[5]
            $kickLength = $param[6];
@@ -84,4 +84,18 @@
            $textMessage = "Kick: $adminKicker kicked $playerKicked for $kickLength because $kickReason";
            sendMessage($textMessage, NULL, NULL );
           }
+         if(preg_match("/^INVALID_COMMAND/", $input) && $param[4] <= $personalMessageAccessLevel)
+          {
+           if($param[1] == "/textOwner")
+            {
+             $pmParam = explode(" ", $input, 6);
+             $messageSender = $param[2];
+             $senderIP = $param[3];
+             $pmMessageContent = $pmParam[5];
+             $textMessage = "$messageSender ($senderIP): $pmMessageContent";
+             sendMessage($textMessage, 1, 1)
+            }
+          }
+      }
+?>
    
