@@ -86,7 +86,7 @@
           }
          if(preg_match("/^INVALID_COMMAND/", $input) && $param[4] <= $personalMessageAccessLevel)
           {
-           if($param[1] == "/textOwner")
+           if(($param[1] == "/textOwner") && $personalMessages)
             {
              $pmParam = explode(" ", $input, 6);
              $messageSender = $param[2];
