@@ -77,7 +77,7 @@
           {
            $kickParam = explode(" ", $input, 8);
            $adminKicker = $param[1];
-           $playerKicked = $param[5]
+           $playerKicked = $param[5];
            $kickLength = $param[6];
            $kickReason = $banParam[7];
            $textMessage = "Kick: $adminKicker kicked $playerKicked for $kickLength because $kickReason";
@@ -92,7 +92,7 @@
              $senderIP = $param[3];
              $pmMessageContent = $pmParam[5];
              $textMessage = "$messageSender ($senderIP): $pmMessageContent";
-             sendMessage($textMessage, 1, 1)
+             sendMessage($textMessage, 1, 1);
             }
           }
       }
