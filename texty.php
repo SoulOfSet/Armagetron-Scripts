@@ -36,7 +36,7 @@
            $chatContent = $chatParam[2];
            $Chatter = $param[1];
            $textMessage = "CHAT - $Chatter: $chatContent";
-           sendMessage($textMesssage, NULL, NULL );
+           sendMessage($textMessage, NULL, NULL );
           }
          if(preg_match("/^DEATH_FRAG/", $input) && $onKill)
           {
