@@ -10,15 +10,7 @@
                'Reply-To: root@myserver.com'."\r\n" .
                'X-Mailer: PHP/' . phpversion();
    if($personalMessage) { $textSubject = "Arma PM: $sender"; }
-   $mail = mail($textAddress, $textSubject, $textMessage, $textHeaders);
-   if(!mail)
-    {
-      echo "Something is broken with the mail function.\n";
-    }
-   elseif((mail) && $personalMessage == 1)
-   {
-     print("player_message $sender \"Message Sent!\"\n");
-   }
+   mail($textAddress, $textSubject, $textMessage, $textHeaders);
    $textSubject = "Armagetron Message"; //Please make sure this is the same as the original $textMessage near the top.
   }
   //
@@ -84,7 +76,7 @@
           }
          if(preg_match("/^INVALID_COMMAND/", $input) && $param[4] <= $personalMessageAccessLevel)
           {
-           if(($param[1] == "/textOwner") && $personalMessages)
+           if(($param[1] == "/textowner") && $personalMessages)
             {
              $pmParam = explode(" ", $input, 6);
              $messageSender = $param[2];
