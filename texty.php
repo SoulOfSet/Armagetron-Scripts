@@ -75,9 +75,8 @@
            $adminKicker = $param[1];
            $playerKicked = $param[5];
            $kickReason = $banParam[7];
-           if(empty($kickLength)) { $kickLength = "none given"; }
            if(empty($kickReason)) { $kickReason = "none given"; }
-           $textMessage = "Kick: $adminKicker kicked $playerKicked for $kickLength because $kickReason";
+           $textMessage = "Kick: $adminKicker kicked $playerKicked because $kickReason";
            sendMessage($textMessage, NULL, NULL );
           }
          if(preg_match("/^INVALID_COMMAND/", $input) && $param[4] <= $personalMessageAccessLevel)
