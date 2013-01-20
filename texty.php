@@ -29,6 +29,9 @@
      		$param = explode(" ", $input);
        $chatParam = explode(" ", $input, 3);
        
+       $banLength = NULL;
+       $banReason = NULL;
+       
         //Trigger Detection
          if(preg_match("/^CHAT/", $input) && $onChat)
           {
