@@ -5,8 +5,7 @@
  //Prequisites For The Mail Function
  $textAddress = "number@e-mailaddress.com"; //You could use an email or cell number here. Examples: http://www.emailtextmessages.com/
  $textSubject = "Armagetron Message";
- $textHeaders = 'From: root@myserver.com'."\r\n".
-                'Reply-To: root@myserver.com'."\r\n";
+ $textHeaders = 'From: root@myserver.com'."\r\n". 'Reply-To: root@myserver.com'."\r\n";
  
  function sendMessage($textMessage, $personalMessage, $sender)
   {
@@ -68,7 +67,7 @@
           {
            $banParam = explode(" ", $input, 8);
            $adminBanner = $param[1];
-           $playerBanned = $param[5]
+           $playerBanned = $param[5];
            $banLength = $param[6];
            $banReason = $banParam[7];
            $textMessage = "Ban: $adminBanner banned $playerBanned for $banLength because $banReason";
