@@ -73,8 +73,8 @@
            $playerKicked = $param[5];
            $kickLength = $param[6];
            $kickReason = $banParam[5];
-           if(empty($kickLength) { $kickLength = "none given"; }
-           if(empty($kickReason) { $kickReason = "none given"; }
+           if(empty($kickLength)) { $kickLength = "none given"; }
+           if(empty($kickReason)) { $kickReason = "none given"; }
            $textMessage = "Kick: $adminKicker kicked $playerKicked for $kickLength because $kickReason";
            sendMessage($textMessage, NULL, NULL );
           }
