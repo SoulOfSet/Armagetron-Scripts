@@ -43,7 +43,7 @@
            $playerKilled = $param[1];
            $playerKiller = $param[2];
            $textMessage = "Kill - $playerKiller killed $playerKilled";
-           sendMessage($textMesssage, NULL, NULL );
+           sendMessage($textMessage, NULL, NULL );
           }
          if(preg_match("/^ADMIN_COMMAND/", $input) && $onAdminCommand)
           {
