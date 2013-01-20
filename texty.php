@@ -8,9 +8,9 @@
  $textHeaders = 'From: root@myserver.com'."\r\n".
                 'Reply-To: root@myserver.com'."\r\n";
  
- function sendMessage($textMessage, $type, $personalMessage, $sender)
+ function sendMessage($textMessage, $personalMessage, $sender)
   {
-   if($personalMessage == 1) { $textSubject = "Personal Message"; }
+   if($personalMessage) { $textSubject = "Arma PM: $sender"; }
    $mail = mail($textAddress, $textSubject, $textMessage, $headers);
    if(!mail)
     {
@@ -30,13 +30,38 @@
   $onAdminCommand = 0;
   $onPlayerBan = 0;
   $onPlayerKick = 0;
-  
-   
-   
-   
-   
+  $personalMessages = 0; //If you want players to be able to send you custom messages
+     $personalMessageAccessLevel = 1; //Minimum level at which someone is allowed to send you a message. Default is admin (1)
+     
      while(1)
       {
        $input = rtrim(fgets(STDIN, 1024)); 
      		$param = explode(" ", $input);
+       $chatParam = explode(" ", $input, 3);
+       
+        //Trigger Detection
+         if(preg_match("/^CHAT/", $input) && $onChat)
+          {
+           $chatParam = explode(" ", $input, 3);
+           $chatContent = $chatParam[2];
+           $Chatter = $param[1];
+           $textMessage = "CHAT - $Chatter: $chatContent";
+           sendMessage($textMesssage, NULL, NULL );
+          }
+         if(preg_match("/^DEATH_FRAG/", $input) && $onKill)
+          {
+           $playerKilled = $param[1];
+           $playerKiller = $param[2];
+           $textMessage = "Kill - $playerKiller killed $playerKilled";
+           sendMessage($textMesssage, NULL, NULL );
+          }
+         if(preg_match("/^ADMIN_COMMAND/", $input) && $onAdminCommand)
+          {
+           $commandParam = explode(" ", $input, 6)
+           $adminCommand = $param[4];
+           $additionalCommandParams = $commandParam[5];
+           $adminCommander = $param[1];
+           $textMessage = "Admin Command by $adminCommander: $adminCommand $additionalCommandParams";
+           sendMessage($textMessage, NULL, NULL );
+          }
    
