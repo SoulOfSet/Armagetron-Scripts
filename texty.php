@@ -61,6 +61,8 @@
            $playerBanned = $param[5];
            $banLength = $param[6];
            $banReason = $banParam[5];
+           if(empty($banLength)) { $banLength = "none given"; }
+           if(empty($banReason)) { $banReason = "none given"; }
            $textMessage = "Ban: $adminBanner banned $playerBanned for $banLength because $banReason";
            sendMessage($textMessage, NULL, NULL );
           }
@@ -71,6 +73,8 @@
            $playerKicked = $param[5];
            $kickLength = $param[6];
            $kickReason = $banParam[5];
+           if(empty($kickLength) { $kickLength = "none given"; }
+           if(empty($kickReason) { $kickReason = "none given"; }
            $textMessage = "Kick: $adminKicker kicked $playerKicked for $kickLength because $kickReason";
            sendMessage($textMessage, NULL, NULL );
           }
