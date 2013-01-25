@@ -9,11 +9,19 @@
  
  $teamShenaners = array();
  $teamBooshers  = array();
+ //Do you want respawn zones to float around?
+ $movingRespawnZones = 0;
+ 
  
  while (1)
   {
    $input = rtrim(fgets(STDIN, 1024));
    $param = explode(" ", $input); 
+   //Random Generators
+   $randX = rand(0, 500);
+   $randY = rand(0, 500);
+   $randXDir = rand(-5, 5);
+   $randYDir = rand(-5, 5);
    
     //PLAYER TRACKING
     if(preg_match("/^PLAYER_ENTERED/", $input))
@@ -100,10 +108,26 @@
       
      //Spawn Zone On Player Death
      if (preg_match("/^DEATH_FRAG|DEATH_SUICIDE|PLAYER_KILLED|DEATH_SHOT_FRAG|DEATH_DEATHZONE|DEATH_SHOT_SUICIDE|DEATH_TEAMKILL|DEATH_SHOT_TEAMKILL|DEATH_ZOMBIEZONE|DEATH_DEATHSHOT|DEATH_SELF_DESTRUCT/", $input))
-      {
+     {
        $playerDied = $param[1];
-       if(inarray()
+       if(in_array($playerDied, $teamShenaners)
+        {
+         if (!$movingRespawnZones) { print("spawn_zone n $playerDied target $randX $randY 10 0 0 0 true 0 0 1"); }
+         elseif ($movingRespawnZones) { print("spawn_zone n $playerDied target $randX $randY 10 0 $randXDir $randYDir true 0 0 1"); }
+        }
+       elseif(in_array($playerDied, $teamBooshers)
+        {
+         if (!$movingRespawnZones) { print("spawn_zone n $playerDied target $randX $randY 10 0 0 0 true 1 0 0"); }
+         elseif ($movingRespawnZones) { print("spawn_zone n $playerDied target $randX $randY 10 0 $randXDir $randYDir true 1 0 0"); }
+        }
       }
      
+     //Check what player entered the zone. The variable AllowEnemnyRespawn governs whether an enemy can also rev a player.
+     //With higher speeds on the Xdir and Ydir ou could even have somewhat of a dodging zone game for the other team members
+     //as they try to elimate the other team they dont want to revive any.
+     if (preg_match("/^TARGETZONE_PLAYER_ENTER/", $input))
+      {
+       
+      }
     
     
