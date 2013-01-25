@@ -101,7 +101,10 @@
       
      //Spawn Zone On Player Death
      if (preg_match("/^DEATH_FRAG|DEATH_SUICIDE|PLAYER_KILLED|DEATH_SHOT_FRAG|DEATH_DEATHZONE|DEATH_SHOT_SUICIDE|DEATH_TEAMKILL|DEATH_SHOT_TEAMKILL|DEATH_ZOMBIEZONE|DEATH_DEATHSHOT|DEATH_SELF_DESTRUCT/", $input))
-      
+      {
+       $playerDied = $param[1];
+       if(inarray()
+      }
      
     
     
