@@ -5,7 +5,7 @@
  //Basically a team based srcipt in which you strive to kill the other team completely.
  //When you die a zone spawns in which your teammates can revive you on touch.
  
- //As of now the script counts on the team name being Shenaners and Booshers. TODO: Make team tracking dynamic
+ //As of now the script counts on the team names being Shenaners and Booshers. TODO: Make team tracking dynamic
  
  $teamShenaners = array();
  $teamBooshers  = array();
@@ -51,7 +51,6 @@
     if(preg_match("/^ROUND_COMMENCING/", $input))
      {
       unset($playersAlive);
-      $sentryactive = 0;
      }
     //END PLAYER TRACKING
     
