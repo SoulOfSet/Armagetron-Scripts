@@ -26,6 +26,18 @@
    $randXDir = rand(-5, 5);
    $randYDir = rand(-5, 5);
    
+    if(preg_match("/^INVALID_COMMAND/", $input))
+     {
+      if($param[4] <= 1 && $param[1] == "/shenaners")
+      {
+       print("console_message" . var_dump($teamShenaners); ."\n");
+      }
+      elseif($param[4] <= 1 && $param[1] == "/booshers")
+      {
+       print("console_message" . var_dump($teamBooshers); ."\n");
+      }
+     }
+   
     //PLAYER TRACKING
     if(preg_match("/^PLAYER_ENTERED/", $input))
      {
