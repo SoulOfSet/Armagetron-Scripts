@@ -97,11 +97,11 @@
       $teamName = $param[1];
       $playerName = $param[2];
       //Depending on which team he's on add him to an array
-      if($teamName == "Shenaners")
+      if($teamName == "shenaners")
        {
         unset($teamShenaners[$playerName]);
        }
-      elseif($teamName == "Booshers")
+      elseif($teamName == "booshers")
        {
         unset($teamBooshers[$playerName]);
        }
