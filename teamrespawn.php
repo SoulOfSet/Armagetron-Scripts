@@ -48,7 +48,7 @@
      }
     if (preg_match("/^DEATH_FRAG|DEATH_SUICIDE|PLAYER_KILLED|DEATH_SHOT_FRAG|DEATH_DEATHZONE|DEATH_SHOT_SUICIDE|DEATH_TEAMKILL|DEATH_SHOT_TEAMKILL|DEATH_ZOMBIEZONE|DEATH_DEATHSHOT|DEATH_SELF_DESTRUCT/", $input))
      {
-      $remove = array_search($param[1], $playersalive);
+      $remove = array_search($param[1], $playersAlive);
       unset($playersAlive[$remove]);
      }
     if(preg_match("/^PLAYER_RENAMED/", $input))
