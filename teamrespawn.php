@@ -69,7 +69,17 @@
       unset($players[$nameold]);
       $namenew = $param[2];
       $players[] = $namenew;
-      //We also need to fix this up for the array teams. Damn renamers makin things complicated: TODO  
+      //Lol this part right here is ugly as hell
+      if(in_array($nameold, $teamShenaners))
+        {
+         unset($teamShenaners[$nameold]);
+         $teamShenaners[] = $namenew;
+        }
+       elseif(in_array($nameold, $teamBooshers))
+        {
+         unset($teamBooshers[$nameold]);
+         $teamBooshers[] = $namenew;
+        }
      }
     if(preg_match("/^ROUND_COMMENCING/", $input))
      {
@@ -96,7 +106,7 @@
      {
       $teamName = $param[1];
       $playerName = $param[2];
-      //Depending on which team he's on add him to an array
+      //Depending on which team he's on remove him from an array
       if($teamName == "shenaners")
        {
         unset($teamShenaners[$playerName]);
@@ -111,11 +121,11 @@
      if(preg_match("/^TEAM_DESTROYED/", $input))
      {
        $teamName = $param[1];
-       if($teamName == "Shenaners")
+       if($teamName == "shenaners")
        {
         unset($teamShenaners);
        }
-      elseif($teamName == "Booshers")
+      elseif($teamName == "booshers")
        {
         unset($teamBooshers);
        }
@@ -158,6 +168,7 @@
           }
         }
        print("collapse_zone $zoneName\n");
+       print("console_message $playerEntered respawned $zoneName!\n");
       }
   }
  ?>
