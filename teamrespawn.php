@@ -11,6 +11,9 @@
  $teamBooshers  = array();
  //Do you want respawn zones to float around?
  $movingRespawnZones = 0;
+ $allowEnemyRespawn = 0; //Whether or notthe enemy team is also allowed to respawn the player
+ $zoneTimeOut = 0; //Whether the respawn zone should time out
+  $zoneTimeOutLength = 0; //The time it takes for a respawn zone to time out. In seconds
  
  
  while (1)
@@ -112,22 +115,37 @@
        $playerDied = $param[1];
        if(in_array($playerDied, $teamShenaners)
         {
-         if (!$movingRespawnZones) { print("spawn_zone n $playerDied target $randX $randY 10 0 0 0 true 0 0 1"); }
-         elseif ($movingRespawnZones) { print("spawn_zone n $playerDied target $randX $randY 10 0 $randXDir $randYDir true 0 0 1"); }
+         if (!$movingRespawnZones) { print("spawn_zone n $playerDied target $randX $randY 10 0 0 0 true 0 0 1\n"); }
+         elseif ($movingRespawnZones) { print("spawn_zone n $playerDied target $randX $randY 10 0 $randXDir $randYDir true 0 0 1\n"); }
         }
        elseif(in_array($playerDied, $teamBooshers)
         {
-         if (!$movingRespawnZones) { print("spawn_zone n $playerDied target $randX $randY 10 0 0 0 true 1 0 0"); }
-         elseif ($movingRespawnZones) { print("spawn_zone n $playerDied target $randX $randY 10 0 $randXDir $randYDir true 1 0 0"); }
+         if (!$movingRespawnZones) { print("spawn_zone n $playerDied target $randX $randY 10 0 0 0 true 1 0 0\n"); }
+         elseif ($movingRespawnZones) { print("spawn_zone n $playerDied target $randX $randY 10 0 $randXDir $randYDir true 1 0 0\n"); }
+        }
+       if($zoneTimeOut)
+        {
+         print("delay_command $zoneTimeOutLength collapse_zone $playerDied\n");
         }
       }
      
-     //Check what player entered the zone. The variable AllowEnemnyRespawn governs whether an enemy can also rev a player.
-     //With higher speeds on the Xdir and Ydir ou could even have somewhat of a dodging zone game for the other team members
-     //as they try to elimate the other team they dont want to revive any.
+     //Check what player entered the zone.
      if (preg_match("/^TARGETZONE_PLAYER_ENTER/", $input))
-      {
-       
+     {
+       $playerEntered = $param[5];
+       $zoneName = $param[2];
+       if($allowEnemyRespawn)
+        {
+         print("respawn_player $zoneName\n 0 0 $randX $randY\n");
+        }
+       elseif(!$allowEnemyRespawn)
+        {
+         if(in_array($playerEntered, $teamShenaners) && in_array($zoneName, $teamShenaners) || in_array($playerEntered, $teamBooshers) && in_array($zoneName, $teamBooshers))//They are on the same team
+          {
+           print("respawn_player $zoneName\n 0 0 $randX $randY\n");
+          }
+        }
       }
+  }
     
     
