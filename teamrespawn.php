@@ -73,11 +73,11 @@
       //Depending on which team he's on add him to an array
       if($teamName == "Shenaners")
        {
-        $playerName = $teamShenaners[];
+        $teamShenaners[] = $playerName;
        }
-      elseif($teamName = "Booshers")
+      elseif($teamName == "Booshers")
        {
-        $playerName = $teamBooshers[];
+        $teamBooshers[] = $playerName;
        }
      }
     if(preg_match("/^TEAM_PLAYER_REMOVED/", $input))
@@ -89,7 +89,7 @@
        {
         unset($teamShenaners[$playerName]);
        }
-      elseif($teamName = "Booshers")
+      elseif($teamName == "Booshers")
        {
         unset($teamBooshers[$playerName]);
        }
@@ -103,7 +103,7 @@
        {
         unset($teamShenaners);
        }
-      elseif($teamName = "Booshers")
+      elseif($teamName == "Booshers")
        {
         unset($teamBooshers);
        }
@@ -113,12 +113,12 @@
      if (preg_match("/^DEATH_FRAG|DEATH_SUICIDE|PLAYER_KILLED|DEATH_SHOT_FRAG|DEATH_DEATHZONE|DEATH_SHOT_SUICIDE|DEATH_TEAMKILL|DEATH_SHOT_TEAMKILL|DEATH_ZOMBIEZONE|DEATH_DEATHSHOT|DEATH_SELF_DESTRUCT/", $input))
      {
        $playerDied = $param[1];
-       if(in_array($playerDied, $teamShenaners)
+       if(in_array($playerDied, $teamShenaners))
         {
          if (!$movingRespawnZones) { print("spawn_zone n $playerDied target $randX $randY 10 0 0 0 true 0 0 1\n"); }
          elseif ($movingRespawnZones) { print("spawn_zone n $playerDied target $randX $randY 10 0 $randXDir $randYDir true 0 0 1\n"); }
         }
-       elseif(in_array($playerDied, $teamBooshers)
+       elseif(in_array($playerDied, $teamBooshers))
         {
          if (!$movingRespawnZones) { print("spawn_zone n $playerDied target $randX $randY 10 0 0 0 true 1 0 0\n"); }
          elseif ($movingRespawnZones) { print("spawn_zone n $playerDied target $randX $randY 10 0 $randXDir $randYDir true 1 0 0\n"); }
