@@ -84,14 +84,15 @@
     if(preg_match("/^ROUND_COMMENCING/", $input))
      {
       unset($playersAlive);
+      unset($teamShenaners);
+      unset($teamBooshers);
      }
     //END PLAYER TRACKING
-    
-    //Team Tracking TODO: Make dynamic
-    if(preg_match("/^TEAM_PLAYER_ADDED/", $input))
+     
+    if(preg_match("/^ONLINE_PLAYER/", $input))
      {
-      $teamName = $param[1];
-      $playerName = $param[2];
+      $teamName = $param[6];
+      $playerName = $param[1];
       //Depending on which team he's on add him to an array
       if($teamName == "shenaners")
        {
@@ -100,20 +101,6 @@
       elseif($teamName == "booshers")
        {
         $teamBooshers[] = $playerName;
-       }
-     }
-    if(preg_match("/^TEAM_PLAYER_REMOVED/", $input))
-     {
-      $teamName = $param[1];
-      $playerName = $param[2];
-      //Depending on which team he's on remove him from an array
-      if($teamName == "shenaners")
-       {
-        unset($teamShenaners[$playerName]);
-       }
-      elseif($teamName == "booshers")
-       {
-        unset($teamBooshers[$playerName]);
        }
      }
      
