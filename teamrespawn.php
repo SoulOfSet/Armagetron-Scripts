@@ -157,7 +157,7 @@
            print("respawn_player $zoneName 0 0 $randX $randY\n");
           }
         }
-       print("collapse_zone $zoneName\n);
+       print("collapse_zone $zoneName\n");
       }
   }
  ?>
