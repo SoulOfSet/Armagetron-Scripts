@@ -30,11 +30,11 @@
      {
       if($param[4] <= 1 && $param[1] == "/shenaners")
       {
-       print("console_message" . var_dump($teamShenaners); ."\n");
+       print("console_message" . var_dump($teamShenaners) ."\n");
       }
       elseif($param[4] <= 1 && $param[1] == "/booshers")
       {
-       print("console_message" . var_dump($teamBooshers); ."\n");
+       print("console_message" . var_dump($teamBooshers) ."\n");
       }
      }
    
