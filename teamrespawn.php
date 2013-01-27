@@ -69,17 +69,6 @@
       unset($players[$nameold]);
       $namenew = $param[2];
       $players[] = $namenew;
-      //Lol this part right here is ugly as hell
-      if(in_array($nameold, $teamShenaners))
-        {
-         unset($teamShenaners[$nameold]);
-         $teamShenaners[] = $namenew;
-        }
-       elseif(in_array($nameold, $teamBooshers))
-        {
-         unset($teamBooshers[$nameold]);
-         $teamBooshers[] = $namenew;
-        }
      }
     if(preg_match("/^ROUND_COMMENCING/", $input))
      {
