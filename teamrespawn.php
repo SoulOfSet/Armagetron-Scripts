@@ -148,13 +148,13 @@
        $zoneName = $param[2];
        if($allowEnemyRespawn)
         {
-         print("respawn_player $zoneName\n 0 0 $randX $randY\n");
+         print("respawn_player $zoneName 0 0 $randX $randY\n");
         }
        elseif(!$allowEnemyRespawn)
         {
          if(in_array($playerEntered, $teamShenaners) && in_array($zoneName, $teamShenaners) || in_array($playerEntered, $teamBooshers) && in_array($zoneName, $teamBooshers))//They are on the same team
           {
-           print("respawn_player $zoneName\n 0 0 $randX $randY\n");
+           print("respawn_player $zoneName 0 0 $randX $randY\n");
           }
         }
       }
