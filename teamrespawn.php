@@ -132,7 +132,7 @@
      {
        $playerEntered = $param[5];
        $zoneName = $param[2];
-       print("collapse_zone $zoneName\n");
+       print("set_zone_radius $zoneName 0\n");
        if($allowEnemyRespawn)
         {
          print("respawn_player $zoneName 0 0 $randX $randY\n");
