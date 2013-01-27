@@ -130,9 +130,9 @@
      //Check what player entered the zone.
      if (preg_match("/^TARGETZONE_PLAYER_ENTER/", $input))
      {
-       print("collapse_zone $zoneName\n");
        $playerEntered = $param[5];
        $zoneName = $param[2];
+       print("collapse_zone $zoneName\n");
        if($allowEnemyRespawn)
         {
          print("respawn_player $zoneName 0 0 $randX $randY\n");
