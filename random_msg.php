@@ -9,12 +9,13 @@ $console_msgs = array(
 "console_message We ask that you try to keep offensive language to a minimum.",
 );
 while(1)
-  {
+	{
 		$line = rtrim(fgets(STDIN, 1024));
 			if(preg_match( "/^ROUND_STARTED/", $line))
 			{
 			$displayedmsg = array_rand($console_msgs, 1);
 			print("$console_msgs[$displayedmsg] \n");
+			shuffle($console_msgs);
 			}
 	}		
 ?>
