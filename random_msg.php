@@ -1,6 +1,7 @@
 #!/usr/bin/php
 <?php
 //script by moofie
+//recommended to have "LADDERLOG_WRITE_ALL 1" in your cfg file
 $console_msgs = array(
 "console_message Please play by loose dogfight rules.  That means no stabbing, backdooring, sealing, or touching the wall of any sort.",
 "console_message Come join us at shenanaboosh.me!",
@@ -11,7 +12,7 @@ $console_msgs = array(
 while(1)
 	{
 		$line = rtrim(fgets(STDIN, 1024));
-			if(preg_match( "/^ROUND_STARTED/", $line))
+			if(preg_match( "/^ROUND_COMMENCING/", $line))
 			{
 			$displayedmsg = array_rand($console_msgs, 1);
 			print("$console_msgs[$displayedmsg] \n");
