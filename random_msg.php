@@ -1,22 +1,18 @@
 #!/usr/bin/php
 <?php
 //script by moofie
-//recommended to have "LADDERLOG_WRITE_ALL 1" in your cfg file
-$console_msgs = array(
-"console_message Please play by loose dogfight rules.  That means no stabbing, backdooring, sealing, or touching the wall of any sort.",
-"console_message Come join us at shenanaboosh.me!",
-"console_message Shenanaboosh for life!",
-"console_message Please don't chatkill other players, it's rude.",
-"console_message We ask that you try to keep offensive language to a minimum.",
-);
+$filename = "/home/mark/armagetronad/servers/test/var/messages.txt";
+//place the messages you'd like displayed in there^
+$handle = fopen($filename, "rb");
+$contents = fread($handle, filesize($filename));
+fclose($handle);
+$line = $contents[rand(0, count($contents) - 1)];
 while(1)
 	{
 		$line = rtrim(fgets(STDIN, 1024));
-			if(preg_match( "/^ROUND_COMMENCING/", $line))
+		if(preg_match( "/^ROUND_COMMENCING/", $line))
 			{
-			$displayedmsg = array_rand($console_msgs, 1);
-			print("$console_msgs[$displayedmsg] \n");
-			shuffle($console_msgs);
+			print("console_message [$line] \n");
 			}
-	}		
+	}
 ?>
