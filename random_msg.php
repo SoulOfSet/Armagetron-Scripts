@@ -6,13 +6,14 @@ $filename = "/home/mark/armagetronad/servers/test/var/messages.txt";
 $handle = fopen($filename, "rb");
 $contents = fread($handle, filesize($filename));
 fclose($handle);
-$line = $contents[rand(0, count($contents) - 1)];
+$messages = array($contents);
+$displayed_msg = array_rand($messages, 1);
 while(1)
 	{
 		$line = rtrim(fgets(STDIN, 1024));
 		if(preg_match( "/^ROUND_COMMENCING/", $line))
 			{
-			print("console_message [$line] \n");
+			print("console_message $displayed_msg \n");
 			}
 	}
 ?>
