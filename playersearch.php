@@ -17,13 +17,11 @@ while (!feof(STDIN))
 	$param = rtrim(fgets(STDIN));
 		if($param[0] == 'INVALID_COMMAND' && $param[1] == "/whois" && $param[4] <= 1)
 		{
-			if(filter_var($param[5], FILTER_VALIDATE_IP))
-			{
-				else
+			$ip = filter_var($param[5], FILTER_VALIDATE_IP) ? true : false;
+			else
 				{
 					$user = preg_replace($regex['find'], $regex['replace'], $param[5]);
 				}
-			}
 		}		
 		
 }
