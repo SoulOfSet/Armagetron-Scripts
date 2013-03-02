@@ -14,11 +14,10 @@ $regex = array(
  );
 while (!feof(STDIN))
 {
-	$param = rtrim(fgets(STDIN));
+	$param = explode(" ", rtrim(fgets(STDIN)));
 		if($param[0] == 'INVALID_COMMAND' && $param[1] == "/whois" && $param[4] <= 1)
 		{
 			$ip = filter_var($param[5], FILTER_VALIDATE_IP) ? true : false;
-			else
 				{
 					$user = preg_replace($regex['find'], $regex['replace'], $param[5]);
 				}
