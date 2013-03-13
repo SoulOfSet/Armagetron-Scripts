@@ -10,7 +10,7 @@
 	$timesentrydie=0;
 	$sentryowner;
 	$sentrytarget;
-		while (1)
+		while (!feof(STDIN))
 			{
 				 $input = rtrim(fgets(STDIN, 1024));
 				 $param = explode(" ", $input); 
