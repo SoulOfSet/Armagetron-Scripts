@@ -1,6 +1,7 @@
 #!/usr/bin/php
 <?php
 //script by moofie
+//note: not currently working
 while(true)
 $players = array();
 {
