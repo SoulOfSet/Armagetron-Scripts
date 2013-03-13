@@ -1,6 +1,7 @@
 #!/usr/bin/php
 <?php
-
+//script by Moofie with help from Light
+//type /whois ingame along with an IP or name.  it will search $file for their other aliases, and list them.
 $file = "/home/mark/armagetronad/servers/moofie_demo/var/ladderlog.txt";
 
 $regex = array(
