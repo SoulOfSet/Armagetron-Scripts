@@ -23,7 +23,7 @@
 		$filesToIncludeStrings = array("teamsumo", "pandamonium", "hr", "df");
 		
 		//Function To Start The Voting Session And Determines The Length Of The Session
-			while(1)
+			while(!feof(STDIN))
 				{
 					$input = rtrim(fgets(STDIN, 1024)); 
 					$param = explode(" ", $input);
