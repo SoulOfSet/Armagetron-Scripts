@@ -16,7 +16,7 @@
   $zoneTimeOutLength = 0; //The time it takes for a respawn zone to time out. In seconds
  
  
- while (1)
+ while (!feof(STDIN))
   {
    $input = rtrim(fgets(STDIN, 1024));
    $param = explode(" ", $input); 
