@@ -1,6 +1,6 @@
 #!/usr/bin/php
 <?php
-mysql_connect("localhost", "root", "51063t") or die(mysql_error());
+mysql_connect("localhost", "root", "******") or die(mysql_error());
 mysql_select_db("auth") or die(mysql_error());
 while(!feof(STDIN))
 {
