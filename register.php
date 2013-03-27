@@ -1,38 +1,72 @@
 #!/usr/bin/php
 <?php
-mysql_connect("localhost", "root", "*****") or die(mysql_error());
-mysql_select_db("auth") or die(mysql_error());
-$registered = array();
-while(!feof(STDIN))
-{
-    	$input = rtrim(fgets(STDIN, 1024));
-		$param = explode(" ", $input); 
-	
-	if(preg_match("/^INVALID_COMMAND/", $input))
-	{
-		if($param[1] == "/register")
-		{
-			if(in_array($param[3], $registered))
-			{
-				print("console_message Sorry, you have already registered for a Shenanaboosh ID.\n");
-			}
-			else
-			{
-				$username = $param[5];
-				$password = $param[6];
-				$md5pw = md5($password);
-				mysql_query("INSERT INTO admin(username, passcode) VALUES('$username', '$md5pw');");
-				print("console_message Thanks for registering!  You can now login by typing '/login {$username}@shenanaboosh.me' with {$password} as your password.\n");
-				$registered[] = $param[3];
-			}
-		}
-		else
-		{
-		print("console_message That command does not exist.\n");
-		}
-	}
 
+define("HOSTNAME", "localhost");
+define("USERNAME", "root");
+define("PASSWORD", "*******");
+
+define("ACCOUNT_LIMIT", 2);
+
+while (!feof(STDIN))
+{
+    $input = rtrim(fgets(STDIN));
+    $split = explode(" ", $input);
+    
+    if ($split[0] == "INVALID_COMMAND" && $split[1] == "/register")
+    {
+        $link = mysql_connect(HOSTNAME, USERNAME, PASSWORD);
+
+        if ($link)
+        {
+            mysql_select_db("auth", $link);
+
+            if (!empty($split[5]) && !empty($split[6]))
+            {
+                $ip = $split[3];
+                $username = mysql_real_escape_string($split[5]);
+                $password = $split[6];
+                
+                $sql = "SELECT COUNT(*) AS `count` FROM `admin` WHERE `username` = '{$username}' LIMIT 1;";
+                $row = mysql_fetch_assoc( mysql_query($sql) );
+
+                if ($row['count'] == 0)
+                {
+                    $sql = "SELECT COUNT(*) AS `count` FROM `admin` WHERE `ip` = '{$ip}';";
+                    $row = mysql_fetch_assoc( mysql_query($sql) );
+
+                    if ($row['count'] <= ACCOUNT_LIMIT)
+                    {
+                        $sql = "INSERT INTO `admin` (`ip`, `username`, `passcode`) VALUES ('{$ip}', '{$username}', '" . md5($password) . "');";
+                        mysql_query($sql);
+                        
+                        // Registration successful.
+                        print("player_message {$split[2]} \"Thank you for registering.  You may now login by typing '/login {$username}@shenanaboosh.me' using password '{$password}'!\"\n");
+                    }
+                    else
+                    {
+                        // You already have too many accounts.
+						print("player_message {$split[2]} \"Sorry, you have reached the limit of 2 accounts.  Please contact Moofie if you would like them edited.\"\n");
+                    }
+                }
+                else
+                {
+                    // Username is taken.
+                }
+            }
+            else
+            {
+                // Username and/or password wasn't filled in.
+				print("player_message {$split[2]} \"You have failed to fill in one of the username/password fields, please try again.\"\n");
+            }
+
+            mysql_close($link);
+        }
+        else
+        {
+            // Failed to connect to MySQL.
+        }
+    }
 }
-mysql_close();
+
 ?>
 
