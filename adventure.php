@@ -1,11 +1,15 @@
 #!/usr/bin/php
 //Script by SoulOfSet and Moofie
     <?php
-    
+    	
         
         //Adventure Class
         class adventure
         {
+         //This variable is usually just your Author title in the repo but can extend to 
+         //type also if you use more than one. (Ex. SoulOfSet/hr/team/maphere.aamap.xml)
+         const sMapCommandPrefix = "SoulOfSet"
+         
          public $sAdventureTitle;
          public $sMapDir;
          public $sAdventurerGID;
@@ -20,7 +24,7 @@
             $this->sAdventurerGID = $sGID;
             $this->iAdventurerRoundCurr = $iRoundCurr;
             
-            if($this->checkAvailable())
+            if($this->checkAvailable($this->sAdventureTitle))
                 {
                     $this->startAdventure();
                 }
@@ -48,16 +52,57 @@
             echo "delay_command 3 center_message You will start at level $this->iAdventurerRoundCurr \n";
             echo "delay_command 6 center_message Please note that this is still beta and requires much work. Please report any problems to SoulOfSet or Moofie \n";
             echo "delay_command 9 center_message Your adventure will begin shortly \n";
-            echo "delay_command 11 map_file SoulOfSet/{$this->sMapDir}/map{$this->iAdventurerRoundCurr}-1.aamap.xml \n";
+            echo "delay_command 11 map_file " . self::sMapCommandPrefix . "/{$this->sMapDir}/map{$this->iAdventurerRoundCurr}-1.aamap.xml \n";
             echo "delay_command 11 spawn_script {$this->sAdventureTitle}/script{$this->iAdventurerRoundCurr}.php \n";
          }
          
         }
+        
+        //Some variables
+        $bAdventureInProgress = FALSE;
+        $cAdventure = NULL;
+        
         while (!feof(STDIN))
         {
-  			 $input = rtrim(fgets(STDIN, 1024));
-				 $param = explode(" ", $input); 
+  	 $input = rtrim(fgets(STDIN, 1024)
+  	 $param = explode(" ", $input);
+  	 
+  	 if($param[0] == "INVALID_COMMAND")
+  	 {
+  	  if(($param[1] == "/start") $$ !$bAdventureInProgress)
+  	  {
+  	   if(!$param[5])
+  	   {
+  	   	echo "console_message Please specify an adventure to play\n";
+  	   }
+  	   else
+  	   {
+  	    $sPlayerName = $param[2];
+  	    $sAdventureName = $param[5];
+  	    if((intval($param[6])) && $param[4] <= 1)
+  	    {
+  	   	$iRoundStart = $param[6];
+  	    }
+  	    else
+  	    {
+  	   	$iRoundStart = 1;
+  	    }
+  	    if(($param[7]) && $param[4] <= 1)
+  	    {
+  	   	$sMapDir = $param[7];
+  	    }
+  	    else
+  	    {
+  	   	$sMapDir = $sAdventureName;
+  	    }
+  	   }
+  	   $cAdventure = new adventure($sAdventureName, $sMapDir, $sPlayerName, $iRoundStart);
+  	  }
+  	  elseif(($param[1] == "/start") $$ $bAdventureInProgress)
+  	  {
+  	  	echo "console_message An adventure is in progress. Type /end to stop it\n"
+  	  }
+  	  	
+  	 }
                  
-                 
-                          
         } 
