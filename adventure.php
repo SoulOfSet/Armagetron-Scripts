@@ -88,7 +88,7 @@ while (!feof(STDIN))
     
     if ($param[0] == "INVALID_COMMAND")
       {
-        if (($param[1] == "/start") && !$this->bAdventureInProgress)
+        if (($param[1] == "/start") && !$cAdventure->bAdventureInProgress)
           {
             if (!$param[5])
               {
