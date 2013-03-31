@@ -114,9 +114,8 @@ while (!feof(STDIN))
                   {
                     $sMapDir = $sAdventureName;
                   }
-              }
-            $cAdventure = new adventure($sAdventureName, $sMapDir, $sPlayerName, $iRoundStart);
-            
+                 $cAdventure = new adventure($sAdventureName, $sMapDir, $sPlayerName, $iRoundStart);
+              }   
           }
         elseif (($param[1] == "/start") && $bAdventureInProgress)
           {
@@ -126,6 +125,10 @@ while (!feof(STDIN))
           {
             $cAdventure = NULL;
             echo "map_file DEFAULT \n";
+          }
+        elseif (($param[1] == "/end") && $bAdventureInProgress == FALSE)
+          {
+            echo "There is no adventure to end! \n";
           }
       }
     elseif (($param[0] == "TARGETZONE_PLAYER_ENTER") && $param[2] == "next")
