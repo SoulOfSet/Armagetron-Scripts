@@ -117,16 +117,16 @@ while (!feof(STDIN))
                  $cAdventure = new adventure($sAdventureName, $sMapDir, $sPlayerName, $iRoundStart);
               }   
           }
-        elseif (($param[1] == "/start") && $bAdventureInProgress)
+        elseif (($param[1] == "/start") && $cAdventure->bAdventureInProgress)
           {
             echo "console_message An adventure is in progress. Type /end to stop it\n";
           }
-        elseif (($param[1] == "/end") && $bAdventureInProgress == TRUE)
+        elseif (($param[1] == "/end") && $cAdventure->bAdventureInProgress == TRUE)
           {
             $cAdventure = NULL;
             echo "map_file DEFAULT \n";
           }
-        elseif (($param[1] == "/end") && $bAdventureInProgress == FALSE)
+        elseif (($param[1] == "/end") && $cAdventure->bAdventureInProgress == FALSE)
           {
             echo "There is no adventure to end! \n";
           }
