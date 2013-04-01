@@ -64,7 +64,7 @@ class adventure
       {
         echo "kill_script {$this->sAdventureTitle}/script{$this->iAdventurerRoundCurr}.php\n";
         $this->iAdventurerRoundCurr = $this->iAdventurerRoundCurr + 1;
-        if (!file_exists("{$this->sAdventureTitle/script{$this->iAdventurerRoundCurr}.php"))
+        if (!file_exists("{$this->sAdventureTitle}/script{$this->iAdventurerRoundCurr}.php"))
           {
             echo "console_message Congrats you have completed the adventure :D.\n";
             $this->bAdventureInProgress = FALSE;
