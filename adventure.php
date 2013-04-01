@@ -57,12 +57,12 @@ class adventure
         echo "delay_command 9 console_message Your adventure will begin shortly \n";
         echo "delay_command 11 map_file " . self::sMapCommandPrefix . "/{$this->sMapDir}/map{$this->iAdventurerRoundCurr}-1.aamap.xml \n";
         echo "delay_command 11 spawn_script {$this->sAdventureTitle}-{$this->iAdventurerRoundCurr}.php \n";
-        echo "delay_command kill $this->sAdventurerGID \n";
+        echo "delay_command 11 kill $this->sAdventurerGID \n";
       }
     
     function nextRound()
       {
-        echo "kill_script script{$this->iAdventurerRoundCurr}.php\n";
+        echo "kill_script {$this->sAdventureTitle}-{$this->iAdventurerRoundCurr}.php\n";
         $this->iAdventurerRoundCurr = $this->iAdventurerRoundCurr + 1;
         if (!file_exists("{$this->sAdventureTitle}-{$this->iAdventurerRoundCurr}.php"))
           {
