@@ -31,7 +31,7 @@ class adventure
           }
         else
           {
-            echo "console_message That adventure is not available \n";
+            echo "console_message That adventure is not available\n";
           }
       }
     
@@ -50,29 +50,29 @@ class adventure
     function startAdventure()
       {
         $this->bAdventureInProgress = TRUE;
-        echo "center_message Hello $this->sAdventurerGID and welcome to $this->sAdventureTitle \n";
+        echo "center_message Hello $this->sAdventurerGID and welcome to $this->sAdventureTitle\n";
         usleep(300000);
-        echo "delay_command 3 console_message You will start at level $this->iAdventurerRoundCurr \n";
-        echo "delay_command 6 console_message Please note that this is still beta and requires much work. Please report any problems to SoulOfSet or Moofie \n";
-        echo "delay_command 9 console_message Your adventure will begin shortly \n";
-        echo "delay_command 11 map_file " . self::sMapCommandPrefix . "/{$this->sMapDir}/map{$this->iAdventurerRoundCurr}-1.aamap.xml \n";
-        echo "delay_command 11 spawn_script {$this->sAdventureTitle}-{$this->iAdventurerRoundCurr}.php \n";
-        echo "delay_command 11 kill $this->sAdventurerGID \n";
+        echo "delay_command 3 console_message You will start at level $this->iAdventurerRoundCurr\n";
+        echo "delay_command 6 console_message Please note that this is still beta and requires much work. Please report any problems to SoulOfSet or Moofie\n";
+        echo "delay_command 9 console_message Your adventure will begin shortly\n";
+        echo "delay_command 11 map_file " . self::sMapCommandPrefix . "/{$this->sMapDir}/map{$this->iAdventurerRoundCurr}-1.aamap.xml\n";
+        echo "delay_command 11 spawn_script {$this->sAdventureTitle}/script{$this->iAdventurerRoundCurr}.php\n";
+        echo "delay_command 11 kill $this->sAdventurerGID\n";
       }
     
     function nextRound()
       {
-        echo "kill_script {$this->sAdventureTitle}-{$this->iAdventurerRoundCurr}.php\n";
+        echo "kill_script {$this->sAdventureTitle}/script{$this->iAdventurerRoundCurr}.php\n";
         $this->iAdventurerRoundCurr = $this->iAdventurerRoundCurr + 1;
-        if (!file_exists("{$this->sAdventureTitle}-{$this->iAdventurerRoundCurr}.php"))
+        if (!file_exists("{$this->sAdventureTitle/script{$this->iAdventurerRoundCurr}.php"))
           {
-            echo "console_message Congrats you have completed the adventure :D. \n";
+            echo "console_message Congrats you have completed the adventure :D.\n";
             $this->bAdventureInProgress = FALSE;
           }
         else
           {
-            echo "map_file " . self::sMapCommandPrefix . "/{$this->sMapDir}/map{$this->iAdventurerRoundCurr}-1.aamap.xml \n";
-            echo "spawn_script {$this->sAdventureTitle}-{$this->iAdventurerRoundCurr}.php \n";
+            echo "map_file " . self::sMapCommandPrefix . "/{$this->sMapDir}/map{$this->iAdventurerRoundCurr}-1.aamap.xml\n";
+            echo "spawn_script {$this->sAdventureTitle}/script{$this->iAdventurerRoundCurr}.php\n";
           }
       }
     
