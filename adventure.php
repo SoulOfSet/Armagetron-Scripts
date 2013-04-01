@@ -1,7 +1,6 @@
 #!/usr/bin/php
-//Script by SoulOfSet and Moofie
     <?php
-
+//Script by SoulOfSet and Moofie
 
 //Adventure Class
 class adventure
@@ -13,7 +12,7 @@ class adventure
     public $sAdventureTitle;
     public $sMapDir;
     public $sAdventurerGID;
-    public $iAdventurerRoundCurr;
+    public $iAdventurerRoundCurr = 1;
     //Add the adventure names here
     public $aAvailableAdventures = array("hi");
     //
@@ -62,11 +61,10 @@ class adventure
     function nextRound()
       {
         echo "kill_script script{$this->iAdventurerRoundCurr}.php\n";
-        $this->iAdventureRoundCurr =+ 1;
+        $this->iAdventurerRoundCurr = $this->iAdventurerRoundCurr + 1;
         if (!file_exists("{$this->sAdventureTitle}/script{$this->iAdventurerRoundCurr}.php"))
           {
             echo "console_message Congrats you have completed the adventure :D. \n";
-            return FALSE;
             $this->bAdventureInProgress = FALSE;
           }
         else
@@ -128,7 +126,7 @@ while (!feof(STDIN))
           }
         elseif (($param[1] == "/end") && $cAdventure->bAdventureInProgress == FALSE)
           {
-            echo "There is no adventure to end! \n";
+            echo "console_message There is no adventure to end! \n";
           }
       }
     elseif (($param[0] == "TARGETZONE_PLAYER_ENTER") && $param[2] == "next")
