@@ -51,10 +51,10 @@ class adventure
       {
         $this->bAdventureInProgress = TRUE;
         echo "center_message Hello $this->sAdventurerGID and welcome to $this->sAdventureTitle \n";
-        usleep(30000);
-        echo "delay_command 3 center_message You will start at level $this->iAdventurerRoundCurr \n";
-        echo "delay_command 6 center_message Please note that this is still beta and requires much work. Please report any problems to SoulOfSet or Moofie \n";
-        echo "delay_command 9 center_message Your adventure will begin shortly \n";
+        usleep(300000);
+        echo "delay_command 3 console_message You will start at level $this->iAdventurerRoundCurr \n";
+        echo "delay_command 6 console_message Please note that this is still beta and requires much work. Please report any problems to SoulOfSet or Moofie \n";
+        echo "delay_command 9 console_message Your adventure will begin shortly \n";
         echo "delay_command 11 map_file " . self::sMapCommandPrefix . "/{$this->sMapDir}/map{$this->iAdventurerRoundCurr}-1.aamap.xml \n";
         echo "delay_command 11 spawn_script {$this->sAdventureTitle}-{$this->iAdventurerRoundCurr}.php \n";
         echo "delay_command kill $this->sAdventurerGID \n";
