@@ -61,8 +61,8 @@ class adventure
     
     function nextRound()
       {
-        echo "kill_script {$this->sAdventureTitle}/script{$this->iAdventurerRoundCurr}.php\n";
-        $this->iAdventureRoundCurr = +1;
+        echo "kill_script script{$this->iAdventurerRoundCurr}.php\n";
+        $this->iAdventureRoundCurr =+ 1;
         if (!file_exists("{$this->sAdventureTitle}/script{$this->iAdventurerRoundCurr}.php"))
           {
             echo "console_message Congrats you have completed the adventure :D. \n";
