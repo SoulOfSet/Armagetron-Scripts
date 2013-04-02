@@ -16,7 +16,10 @@
    //Settings for this particular script
    $aSettings = array("cycle_speed 1", "sp_walls_length 1", "walls_length 1", "cycle_walls_length 1", "cycle_brake_deplete 0", "cycle_speed_decay_above 10", "cycle_delay 0.1", "cycle_rubber 1000");
    //We're using zones as NPC's here. Start from type unless they need names. (Ex. n Phylis death 10 0 etc)
-   $aNpcSpawns = array("n phylis ")
+   //Some may have paths to help make it more realistic
+   $aNpcSpawns = array("n Phylis rubber 310 400 15 0 0 0 0 true 1 0 0 15", "n Sarah rubber 150 300 15 0 0 0 0 true 1 0 1 15", "n Vain rubber 300 200 15 0 0 0 0 true 1 0.3 0", "n Jack 327 100 7 0 0 0 0 true 0 1 0 7", "n Carol rubber 200 100 15 0 0 0 0 true 0.4 0 1 15", "n Moofie 250 450 10 0 0 0 0 true 0.4 0.9 0.4 15");
+   
+   $aPhylisDialogue = array
    
    while (!feof(STDIN))
     {
@@ -32,6 +35,10 @@
               foreach($aSettings as $value)
                 {
                   echo "$value\n";
+                }
+              foreach($aNpcSpawn as $value)
+                {
+                    echo "spawn_zone {$value}\n";
                 }
             }
         }
