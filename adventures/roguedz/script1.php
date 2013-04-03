@@ -29,6 +29,7 @@
    //Rolan
    $aRolanDialouge = array("Fuckin Death needs to get his shit together", "Who the fuck does he think he is", "Get him back man. Fuckin last thing we need is this on our rep", "Bullshit Death....bullshit");
    //The moofie dialouge
+   $aMoofieDialouge = "Oh...ill just....sorry...bye..";
    
    
    while (!feof(STDIN))
