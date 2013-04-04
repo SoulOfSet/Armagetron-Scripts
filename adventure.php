@@ -14,7 +14,7 @@ class adventure
     public $sAdventurerGID;
     public $iAdventurerRoundCurr = 1;
     //Add the adventure names here
-    public $aAvailableAdventures = array("hi");
+    public $aAvailableAdventures = array("roguedz");
     //
     public $bAdventureInProgress = FALSE;
     
