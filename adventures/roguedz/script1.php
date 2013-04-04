@@ -114,6 +114,7 @@ while (!feof(STDIN))
                 echo "0xff0700Phylis: Talk to the other guild members, they'll provide some extra info. When you're ready to leave enter the portal behind the building. Good luck.\n";
                 sleep(1);
                 echo "cycle_brake -100\n";
+                echo "spawn_zone n next target 450 100 5 0\n";
               }
           }
         elseif (($param[1] == "PLAYER_GRIDPOS") && $bPhylisActive == TRUE)
