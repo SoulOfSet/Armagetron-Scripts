@@ -1,6 +1,8 @@
 #!/usr/bin/php
     <?php
 //Script by SoulOfSet and Moofie
+//Incase you got your own Mr. Special
+$sDefaultCFGCommand = "RINCLUDE default.cfg(http://shenanaboosh.me/armagetronad/default.cfg)";
 
 //Adventure Class
 class adventure
@@ -66,7 +68,7 @@ class adventure
         $this->iAdventurerRoundCurr = $this->iAdventurerRoundCurr + 1;
         if (!file_exists("{$this->sAdventureTitle}/script{$this->iAdventurerRoundCurr}.php"))
           {
-            echo "console_message Congrats you have completed the adventure :D.\n";
+            echo "center Congrats you have completed the adventure :D.\n";
             $this->bAdventureInProgress = FALSE;
           }
         else
@@ -124,7 +126,7 @@ while (!feof(STDIN))
         elseif (($param[1] == "/end") && $cAdventure->bAdventureInProgress == TRUE)
           {
             $cAdventure = NULL;
-            echo "map_file DEFAULT \n";
+            echo "$sDefaultCFGCommand\n";
           }
         elseif (($param[1] == "/end") && $cAdventure->bAdventureInProgress == FALSE)
           {
