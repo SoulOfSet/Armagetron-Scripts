@@ -98,31 +98,31 @@ while (!feof(STDIN))
         //This script is just a chronological series of events so we can create and check variables along the way
         if ($sGameTime == "2")
           {
-            echo "fullscreen_message Hello tronner and welcome to $sAdventureTitle. This is your clan meeting quarters. On your way back from a quest you notice general unrest. You should go speak with clan master behind the bar, Phylis. He will fill you in on the details.\n";
+            echo "fullscreen_message 0 Hello tronner and welcome to $sAdventureTitle. This is your clan meeting quarters. On your way back from a quest you notice general unrest. You should go speak with clan master behind the bar, Phylis. He will fill you in on the details.\n";
             echo "console_message 0xff0005 Talk to Phylis at the bar. He'll tell you whats going on \n";
           }
-        if (($param[1] == "PLAYER_GRIDPOS") && $bPhylisActive == TRUE)
+        if (($param[0] == "PLAYER_GRIDPOS") && $bPhylisActive == TRUE)
           {
             if (($param[2] > 250) && $param[3] > 360 && $param[3] < 423 && $param[2] < 373)
               {
                 $bPhylisActive = FALSE;
                 echo "cycle_brake 0\n";
-                echo "0xff0700Phylis: Oh thank god you are here. DeathZone has gone rampant. He left the guild a day ago and has since used his magic to cause hell around the surrounding towns.\n";
+                echo "console_message 0xff0700Phylis: Oh thank god you are here. DeathZone has gone rampant. He left the guild a day ago and has since used his magic to cause hell around the surrounding towns.\n";
                 sleep(3);
-                echo "0xff0700Phylis: Listen I don't know whats gotten into Death but we're responsible for this. We have to stop him at all costs. Kill him if you must but try and recover him if possible.\n";
+                echo "console_message 0xff0700Phylis: Listen I don't know whats gotten into Death but we're responsible for this. We have to stop him at all costs. Kill him if you must but try and recover him if possible.\n";
                 sleep(3);
-                echo "0xff0700Phylis: Talk to the other guild members, they'll provide some extra info. When you're ready to leave enter the portal behind the building. Good luck.\n";
+                echo "console_message 0xff0700Phylis: Talk to the other guild members, they'll provide some extra info. When you're ready to leave enter the portal behind the building. Good luck.\n";
                 sleep(1);
                 echo "cycle_brake -100\n";
                 echo "spawn_zone n next target 450 100 5 0\n";
               }
           }
-        elseif (($param[1] == "PLAYER_GRIDPOS") && $bPhylisActive == TRUE)
+        elseif (($param[0] == "PLAYER_GRIDPOS") && $bPhylisActive == TRUE)
           {
             if (($param[2] > 225) && $param[2] > 275 && $param[3] > 427)
             {
                 echo "cycle_brake 0\n";
-                echo "Moofie: $aMoofieDialouge\n";
+                echo "console_message Moofie: $aMoofieDialouge\n";
                 sleep(3);
                 echo "collapse_zone Moofie\n";
                 echo "cycle_brake -100\n";         
@@ -130,11 +130,11 @@ while (!feof(STDIN))
                 
           }
         
-        if ($param[1] == "TARGETZONE_PLAYER_ENTER")
+        if ($param[0] == "TARGETZONE_PLAYER_ENTER")
           {
             if ($bPhylisActive) //Naughty, go talk to Phylis first
               {
-                echo "$param[2]: Go see Phylis.";
+                echo "console_message $param[2]: Go see Phylis.\n";
               }
             else //Already talked to him
               {
@@ -143,7 +143,7 @@ while (!feof(STDIN))
                     if ($aSarahDialouge)
                       {
                         $iArrayValue = array_rand($aSarahDialouge, 1);
-                        echo "Sarah: $aSarahDialouge[$iArrayValue]";
+                        echo "console_message Sarah: $aSarahDialouge[$iArrayValue]\n";
                         unset($aSarahDialouge[$iArrayValue]);
                       }
                   }
@@ -152,7 +152,7 @@ while (!feof(STDIN))
                     if ($aVainDialouge)
                       {
                         $iArrayValue = array_rand($aVainDialouge, 1);
-                        echo "Vain: $aVainDialouge[$iArrayValue]";
+                        echo "console_message Vain: $aVainDialouge[$iArrayValue]\n";
                         unset($aVainDialouge[$iArrayValue]);
                       }
                   }
@@ -161,7 +161,7 @@ while (!feof(STDIN))
                     if ($aJackDialouge)
                       {
                         $iArrayValue = array_rand($aJackDialouge, 1);
-                        echo "Jack: $aSarahDialouge[$iArrayValue]";
+                        echo "consoel_message Jack: $aSarahDialouge[$iArrayValue]\n";
                         unset($aJackDialouge[$iArrayValue]);
                       }
                   }
@@ -170,7 +170,7 @@ while (!feof(STDIN))
                     if ($aRolanDialouge)
                       {
                         $iArrayValue = array_rand($aRolanDialouge, 1);
-                        echo "Rolan: $aRolanDialouge[$iArrayValue]";
+                        echo "console_message Rolan: $aRolanDialouge[$iArrayValue]\n";
                         unset($aRolanDialouge[$iArrayValue]);
                       }
                   }
@@ -178,4 +178,5 @@ while (!feof(STDIN))
           }
       }
   }
+ ?>
 
