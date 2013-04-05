@@ -23,17 +23,19 @@ $aSettings       = array(
     "cycle_speed_decay_above 10",
     "cycle_delay 0.1",
     "cycle_rubber 1000",
-    "cycle_brake -100"
+    "cycle_brake -100",
+    "sp_size_factor -3",
+    "sp_num_ai 0"
 );
 //We're using zones as NPC's here. Start from type unless they need names. (Ex. n Phylis death 10 0 etc)
 //Some may have paths to help make it more realistic
 $aNpcSpawns      = array(
-    "n Phylis rubber 310 400 15 0 0 0 0 true 1 0.5 0 15",
-    "n Sarah rubber 150 300 15 0 0 0 0 true 1 0 1 15",
-    "n Vain rubber 300 200 15 0 0 0 0 true 1 0.3 0",
-    "n Jack rubber 327 100 7 0 0 0 0 true 0 1 0 7",
-    "n Rolan rubber 200 100 15 0 0 0 0 true 0.4 0 1 15",
-    "n Moofie rubber 250 450 10 0 0 0 0 true 0.4 0.9 0.4 15"
+    "n Phylis target 310 400 15 0 0 0 true 1 0.5 0 15",
+    "n Sarah target 150 300 15 0 0 0 true 1 0 1 15",
+    "n Vain target 300 200 15 0 0 0 true 1 0.3 0",
+    "n Jack target 327 100 7 0 0 0 true 0 1 0 7",
+    "n Rolan target 200 100 15 0 0 0 true 0.4 0 1 15",
+    "n Moofie target 250 450 10 0 0 0 true 0.4 0.9 0.4 15"
 );
 //Dialogue for the NPC's after the initial chat with phylis is cleared
 //A set for each so it doesn't seem half assed
@@ -103,7 +105,7 @@ while (!feof(STDIN))
           }
         if (($param[0] == "PLAYER_GRIDPOS") && $bPhylisActive == TRUE)
           {
-            if (($param[2] > 250) && $param[3] > 360 && $param[3] < 423 && $param[2] < 373)
+            if (($param[2] > 90) && $param[3] > 120 && $param[3] < 150 && $param[2] < 130)
               {
                 $bPhylisActive = FALSE;
                 echo "cycle_brake 0\n";
@@ -119,7 +121,7 @@ while (!feof(STDIN))
           }
         elseif (($param[0] == "PLAYER_GRIDPOS") && $bPhylisActive == TRUE)
           {
-            if (($param[2] > 225) && $param[2] > 275 && $param[3] > 427)
+            if (($param[2] > 70) && $param[2] < 110 && $param[3] > 150)
             {
                 echo "cycle_brake 0\n";
                 echo "console_message Moofie: $aMoofieDialouge\n";
@@ -161,7 +163,7 @@ while (!feof(STDIN))
                     if ($aJackDialouge)
                       {
                         $iArrayValue = array_rand($aJackDialouge, 1);
-                        echo "consoel_message Jack: $aSarahDialouge[$iArrayValue]\n";
+                        echo "console_message Jack: $aSarahDialouge[$iArrayValue]\n";
                         unset($aJackDialouge[$iArrayValue]);
                       }
                   }
