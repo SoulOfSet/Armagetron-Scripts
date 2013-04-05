@@ -96,9 +96,9 @@ while (!feof(STDIN))
     if ($bScriptActive)
       {
         //This script is just a chronological series of events so we can create and check variables along the way
-        if ($sGameTime == "2")
+        if ($sGameTime == "-1")
           {
-            echo "fullscreen_message 0 Hello tronner and welcome to $sAdventureTitle. This is your clan meeting quarters. On your way back from a quest you notice general unrest. You should go speak with clan master behind the bar, Phylis. He will fill you in on the details.\n";
+            echo "console_message 0 Hello tronner and welcome to $sAdventureTitle. This is your clan meeting quarters. On your way back from a quest you notice general unrest. You should go speak with clan master behind the bar, Phylis. He will fill you in on the details.\n";
             echo "console_message 0xff0005 Talk to Phylis at the bar. He'll tell you whats going on \n";
           }
         if (($param[0] == "PLAYER_GRIDPOS") && $bPhylisActive == TRUE)
@@ -130,7 +130,7 @@ while (!feof(STDIN))
                 
           }
         
-        if ($param[0] == "TARGETZONE_PLAYER_ENTER")
+        elseif ($param[0] == "TARGETZONE_PLAYER_ENTER")
           {
             if ($bPhylisActive) //Naughty, go talk to Phylis first
               {
