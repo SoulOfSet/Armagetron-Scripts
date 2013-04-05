@@ -125,6 +125,7 @@ while (!feof(STDIN))
           }
         elseif (($param[1] == "/end") && $cAdventure->bAdventureInProgress == TRUE)
           {
+            echo "kill_script {$cAdventure->sAdventureTitle}/script{$cAdventure->iAdventureRoundCurr}.php\n";
             $cAdventure = NULL;
             echo "$sDefaultCFGCommand\n";
           }
