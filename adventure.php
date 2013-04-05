@@ -68,7 +68,7 @@ class adventure
         $this->iAdventurerRoundCurr = $this->iAdventurerRoundCurr + 1;
         if (!file_exists("{$this->sAdventureTitle}/script{$this->iAdventurerRoundCurr}.php"))
           {
-            echo "center Congrats you have completed the adventure :D.\n";
+            echo "console_message Congrats you have completed the adventure :D.\n";
             $this->bAdventureInProgress = FALSE;
           }
         else
