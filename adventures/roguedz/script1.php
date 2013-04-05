@@ -81,7 +81,7 @@ while (!feof(STDIN))
     if ($param[0] == "GAME_TIME")
       {
         $sGameTime = $param[1];
-        if ($param[1] == "1")
+        if ($param[1] == "-1")
           {
             $bScriptActive = TRUE;
             foreach ($aSettings as $value)
@@ -110,16 +110,16 @@ while (!feof(STDIN))
                 $bPhylisActive = FALSE;
                 echo "cycle_brake 0\n";
                 echo "console_message 0xff0700Phylis: Oh thank god you are here. DeathZone has gone rampant. He left the guild a day ago and has since used his magic to cause hell around the surrounding towns.\n";
-                sleep(3);
+                sleep(4);
                 echo "console_message 0xff0700Phylis: Listen I don't know whats gotten into Death but we're responsible for this. We have to stop him at all costs. Kill him if you must but try and recover him if possible.\n";
-                sleep(3);
+                sleep(4);
                 echo "console_message 0xff0700Phylis: Talk to the other guild members, they'll provide some extra info. When you're ready to leave enter the portal behind the building. Good luck.\n";
                 sleep(1);
                 echo "cycle_brake -100\n";
                 echo "spawn_zone n next target 450 100 5 0\n";
               }
           }
-        elseif (($param[0] == "PLAYER_GRIDPOS") && $bPhylisActive == TRUE)
+        elseif ($param[0] == "PLAYER_GRIDPOS")
           {
             if (($param[2] > 70) && $param[2] < 110 && $param[3] > 150)
             {
