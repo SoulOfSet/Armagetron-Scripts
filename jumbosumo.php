@@ -54,3 +54,4 @@ $numplayers = count($players);
           }
       }
   }
+?>
