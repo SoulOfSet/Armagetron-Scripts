@@ -6,7 +6,7 @@ $numplayers = count($players);
 $zonesizes = array(30, 45, 60, 75, 90);
 while (!feof(STDIN))
 {
-  $input = rtrim(fgets(STDIN));
+	$input = rtrim(fgets(STDIN));
     $param = explode(" ", $input);
 
 		if ($param[0] == "PLAYER_ENTERED")
@@ -22,7 +22,7 @@ while (!feof(STDIN))
 		{
 			$oldname = array_search($param[1], $players);
 			unset($players[$oldname]);
-			array_push($players, $param[2]
+			array_push($players, $param[2]);
 		}
 		if ($numplayers <= 3)
 		{
