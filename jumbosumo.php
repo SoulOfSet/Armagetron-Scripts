@@ -17,7 +17,6 @@ while (!feof(STDIN))
 		{
 			$remove = array_search($param[1], $players);
 			unset($players[$remove]);
-			$numplayers = $numplayers - 1;
 		}
 		if ($param[0] == "PLAYER_RENAMED")
 		{
