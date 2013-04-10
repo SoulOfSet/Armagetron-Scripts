@@ -1,81 +1,4 @@
-
-BETA
-PHP Formatter
-HomeFeaturesContactAbout
-	Bookmark and Share
-
-			
-Welcome to the new PHP Formatter BETA!
-We've given PHP Formatter a new design as well as a new engine! The new engine features:
-
-    Blazingly fast, on the fly formatting of all scripts!
-    PHP 4 and PHP 5 support
-    Handy syntax check function
-    Ability to create your own coding styles, or to use builtin styles
-    Proper handling of doc comments, and alternative control structures
-
-
-
-			
-InputStyleFormat
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-	#!/usr/bin/php
+#!/usr/bin/php
 <?php
 //Jumbo Sumobar script: by Moofie
 $players    = array();
@@ -132,6 +55,4 @@ while (!feof(STDIN))
       }
   }
 ?>
-Download Formatting took: 141 ms
-PHP Formatter made by Spark Labs  
-Copyright Gerben van Veenendaal  
+Download Formatt
