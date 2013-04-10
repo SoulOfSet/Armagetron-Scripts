@@ -2,7 +2,6 @@
 <?php
 //Jumbo Sumobar script: by Moofie
 $players    = array();
-$numplayers = count($players);
 $zonesizes  = array(
     30,
     45,
@@ -11,6 +10,7 @@ $zonesizes  = array(
     90
 );
 while (!feof(STDIN))
+$numplayers = count($players);  
   {
     $input = rtrim(fgets(STDIN));
     $param = explode(" ", $input);
@@ -54,5 +54,3 @@ while (!feof(STDIN))
           }
       }
   }
-?>
-Download Formatt
