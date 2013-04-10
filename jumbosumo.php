@@ -1,8 +1,8 @@
 #!/usr/bin/php
 <?php
 //Jumbo Sumobar script: by Moofie
-$players    = array();
-$zonesizes  = array(
+$players = array();
+$zonesizes = array(
     30,
     45,
     60,
@@ -10,15 +10,19 @@ $zonesizes  = array(
     90
 );
 while (!feof(STDIN))
-$numplayers = count($players);  
   {
+$numplayers = count($players);
     $input = rtrim(fgets(STDIN));
     $param = explode(" ", $input);
     
-    if ($param[0] == "PLAYER_ENTERED")
+    if ($param[0] == "CYCLE_CREATED")
       {
-        array_push($players, $param[3]);
+        array_push($players, $param[1]);
       }
+    if ($param[0] == "NEW_ROUND")
+	  {
+		$players = array();
+	  }
     if ($param[0] == "PLAYER_LEFT")
       {
         $remove = array_search($param[1], $players);
