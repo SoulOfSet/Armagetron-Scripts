@@ -13,6 +13,9 @@ $sAdventureTitle = "The Rogue DeathZone";
 
 $bPhylisDialoguePassed = FALSE;
 
+//Moofie Activated
+$bMoofie = true;
+
 //Settings for this particular script
 $aSettings       = array(
     "cycle_speed 0",
@@ -23,7 +26,7 @@ $aSettings       = array(
     "cycle_speed_decay_above 10",
     "cycle_delay 0.1",
     "cycle_rubber 1000",
-    "cycle_brake -100",
+    "cycle_brake -200",
     "sp_size_factor -3",
     "sp_num_ai 0"
 );
@@ -81,7 +84,7 @@ while (!feof(STDIN))
     if ($param[0] == "GAME_TIME")
       {
         $sGameTime = $param[1];
-        if ($param[1] == "-1")
+        if ($param[1] == "-2")
           {
             $bScriptActive = TRUE;
             foreach ($aSettings as $value)
@@ -121,7 +124,7 @@ while (!feof(STDIN))
           }
         elseif ($param[0] == "PLAYER_GRIDPOS")
           {
-            if (($param[2] > 70) && $param[2] < 110 && $param[3] > 150)
+            if (($param[2] > 75) && $param[2] < 110 && $param[3] > 150 && $bMoofie)
             {
                 echo "cycle_brake 0\n";
                 echo "console_message Moofie: $aMoofieDialouge\n";
