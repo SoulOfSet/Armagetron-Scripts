@@ -53,13 +53,16 @@ class adventure
       {
         $this->bAdventureInProgress = TRUE;
         echo "center_message Hello $this->sAdventurerGID and welcome to $this->sAdventureTitle\n";
-        usleep(300000);
-        echo "delay_command 3 console_message You will start at level $this->iAdventurerRoundCurr\n";
-        echo "delay_command 6 console_message Please note that this is still beta and requires much work. Please report any problems to SoulOfSet or Moofie\n";
-        echo "delay_command 9 console_message Your adventure will begin shortly\n";
-        echo "delay_command 11 map_file " . self::sMapCommandPrefix . "/{$this->sMapDir}/map{$this->iAdventurerRoundCurr}-1.aamap.xml\n";
-        echo "delay_command 11 spawn_script {$this->sAdventureTitle}/script{$this->iAdventurerRoundCurr}.php\n";
-        echo "delay_command 11 kill $this->sAdventurerGID\n";
+        sleep(3);
+        echo "console_message You will start at level $this->iAdventurerRoundCurr\n";
+        sleep(3);
+        echo "console_message Please note that this is still beta and requires much work. Please report any problems to SoulOfSet or Moofie\n";
+        sleep(3);
+        echo "console_message Your adventure will begin shortly\n";
+        sleep(2);
+        echo "map_file " . self::sMapCommandPrefix . "/{$this->sMapDir}/map{$this->iAdventurerRoundCurr}-1.aamap.xml\n";
+        echo "spawn_script {$this->sAdventureTitle}/script{$this->iAdventurerRoundCurr}.php\n";
+        echo "kill $this->sAdventurerGID\n";
       }
     
     function nextRound()
@@ -71,6 +74,10 @@ class adventure
             echo "console_message Congrats you have completed the adventure :D.\n";
             echo "cycle_rubber -1\n";
             echo "include {$sDefaultCFGCommand}\n";
+            foreach($aGeneralSettings as $value)
+                {
+                    echo "{$value}\n";
+                }
             $this->bAdventureInProgress = FALSE;
             
           }
@@ -87,6 +94,22 @@ class adventure
 
 //Some variables
 $cAdventure = NULL;
+//We need some general settings for the script to run right.
+$aGeneralSettings = array(
+    "cycle_rubber 1000",
+    "target_survive_time -1",
+    "target_lifetime -1",
+    "target_initial_score 0",
+    "sp_num_ais 0",
+    "sp_team_balance_with_ais 0 ",
+    "num_ais 0",
+    "team_balance_with_ais 0"
+);
+
+foreach($aGeneralSettings as $value)
+{
+    echo "{$value}\n";
+}
 
 while (!feof(STDIN))
   {
@@ -121,8 +144,8 @@ while (!feof(STDIN))
                   {
                     $sMapDir = $sAdventureName;
                   }
-                 $cAdventure = new adventure($sAdventureName, $sMapDir, $sPlayerName, $iRoundStart);
-              }   
+                $cAdventure = new adventure($sAdventureName, $sMapDir, $sPlayerName, $iRoundStart);
+              }
           }
         elseif (($param[1] == "/start") && $cAdventure->bAdventureInProgress)
           {
