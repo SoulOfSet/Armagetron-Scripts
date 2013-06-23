@@ -69,10 +69,15 @@ class adventure
         if (!file_exists("{$this->sAdventureTitle}/script{$this->iAdventurerRoundCurr}.php"))
           {
             echo "console_message Congrats you have completed the adventure :D.\n";
+            echo "cycle_rubber -1\n";
+            echo "include {$sDefaultCFGCommand}\n";
             $this->bAdventureInProgress = FALSE;
+            
           }
         else
           {
+            echo "cycle_rubber -1\n";
+            echo "cycle_rubber 1000\n";
             echo "map_file " . self::sMapCommandPrefix . "/{$this->sMapDir}/map{$this->iAdventurerRoundCurr}-1.aamap.xml\n";
             echo "spawn_script {$this->sAdventureTitle}/script{$this->iAdventurerRoundCurr}.php\n";
           }
