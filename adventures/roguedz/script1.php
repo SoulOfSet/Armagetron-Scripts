@@ -28,7 +28,8 @@ $aSettings       = array(
     "cycle_rubber 1000",
     "cycle_brake -200",
     "sp_size_factor -3",
-    "sp_num_ai 0"
+    "sp_num_ai 0",
+    
 );
 //We're using zones as NPC's here. Start from type unless they need names. (Ex. n Phylis death 10 0 etc)
 //Some may have paths to help make it more realistic
@@ -130,7 +131,8 @@ while (!feof(STDIN))
                 echo "console_message Moofie: $aMoofieDialouge\n";
                 sleep(3);
                 echo "collapse_zone Moofie\n";
-                echo "cycle_brake -100\n";         
+                echo "cycle_brake -100\n";
+                $bMoofie = FALSE;
             }   
                 
           }
