@@ -89,14 +89,18 @@ class adventure
             echo "spawn_script {$this->sAdventureTitle}/script{$this->iAdventurerRoundCurr}.php\n";
           }
       }
+     function endAdventure()
+        {
+            echo "kill_script {$this->sAdventureTitle}/script{$this->iAdventureRoundCurr}.php\n";
+            echo "$sDefaultCFGCommand\n";         
+        }
     
   }
 
 //Some variables
 $cAdventure = NULL;
 //We need some general settings for the script to run right.
-$aGeneralSettings = array(
-    "cycle_rubber 1000",
+$aGeneralSettings = array("cycle_rubber 1000",
     "target_survive_time -1",
     "target_lifetime -1",
     "target_initial_score 0",
@@ -153,9 +157,9 @@ while (!feof(STDIN))
           }
         elseif (($param[1] == "/end") && $cAdventure->bAdventureInProgress == TRUE)
           {
-            echo "kill_script {$cAdventure->sAdventureTitle}/script{$cAdventure->iAdventureRoundCurr}.php\n";
+            $cAdventure->endAdventure();
             $cAdventure = NULL;
-            echo "$sDefaultCFGCommand\n";
+            
           }
         elseif (($param[1] == "/end") && $cAdventure->bAdventureInProgress == FALSE)
           {
@@ -165,6 +169,11 @@ while (!feof(STDIN))
     elseif (($param[0] == "TARGETZONE_PLAYER_ENTER") && $param[2] == "next")
       {
         $cAdventure->nextround();
+      }
+    elseif (($param[0] == "GAME_END")
+      {
+        $cAdventure->endAdventure();
+        $cAdventure = NULL;
       }
   }
 
