@@ -28,7 +28,7 @@ $aSettings       = array(
     "cycle_rubber 1000",
     "cycle_brake -200",
     "sp_size_factor -3",
-    "sp_num_ai 0",
+    "sp_num_ai 0"
     
 );
 //We're using zones as NPC's here. Start from type unless they need names. (Ex. n Phylis death 10 0 etc)
@@ -119,7 +119,7 @@ while (!feof(STDIN))
                 sleep(4);
                 echo "console_message 0xff0700Phylis: Talk to the other guild members, they'll provide some extra info. When you're ready to leave enter the portal behind the building. Good luck.\n";
                 sleep(1);
-                echo "cycle_brake -100\n";
+                echo "cycle_brake -200\n";
                 echo "spawn_zone n next target 450 100 5 0\n";
               }
           }
@@ -129,10 +129,10 @@ while (!feof(STDIN))
             {
                 echo "cycle_brake 0\n";
                 echo "console_message Moofie: $aMoofieDialouge\n";
+                $bMoofie = FALSE;
                 sleep(3);
                 echo "collapse_zone Moofie\n";
-                echo "cycle_brake -100\n";
-                $bMoofie = FALSE;
+                echo "cycle_brake -200\n";  
             }   
                 
           }
