@@ -117,7 +117,7 @@ while (!feof(STDIN))
                 sleep(4);
                 echo "console_message 0xff0700Phylis: Listen I don't know whats gotten into Death but we're responsible for this. We have to stop him at all costs. Kill him if you must but try and recover him if possible.\n";
                 sleep(4);
-                echo "console_message 0xff0700Phylis: Talk to the other guild members, they'll provide some extra info. When you're ready to leave enter the portal behind the building. Good luck.\n";
+                echo "console_message 0xff0700Phylis: Talk to the other guild members, they'll provide some extra info. When you're ready to leave enter the portal next to the building. Good luck.\n";
                 sleep(1);
                 echo "cycle_brake -200\n";
                 echo "spawn_zone n next target 450 100 5 0\n";
